@@ -1,5 +1,5 @@
 ---
-import { siteConfig, platformLinks, platformStandards } from '../config/content';
+import { siteConfig, platformLinks, platformStandards, companyInfo } from '../config/content';
 ---
 
 <footer class="bg-navy-800 border-t border-white/5 py-12">
@@ -10,11 +10,14 @@ import { siteConfig, platformLinks, platformStandards } from '../config/content'
           <div class="w-6 h-6 bg-cyan-500 rounded-sm"></div>
           <span class="font-bold text-lg">{siteConfig.name}</span>
         </div>
-        <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-md">
-          {siteConfig.description}
+        <p class="text-gray-400 text-sm leading-relaxed max-w-md">
+          Market intelligence infrastructure for the veterinary economy.
         </p>
-        <a href={`mailto:${siteConfig.contact}`} class="text-cyan-500 hover:text-cyan-600 text-sm">
-          {siteConfig.contact}
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-md">
+          Built to restore market context before decisions are made.
+        </p>
+        <a href={`mailto:${companyInfo.contact}`} class="text-cyan-500 hover:text-cyan-600 text-sm">
+          {companyInfo.contact}
         </a>
       </div>
       

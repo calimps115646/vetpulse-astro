@@ -1,22 +1,55 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import AboutSection from '../components/AboutSection.astro';
 import { 
   siteConfig,
+  hero,
   challengeSection,
   dataArchitecture,
   operatorsPage,
   investorsPage,
   vendorsPage,
   engagementModel,
-  caseStudies 
+  caseStudies,
+  aboutSection
 } from '../config/content';
 ---
 
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
-  <Hero />
-  <AboutSection />
+  
+  <!-- Hero Section (inline) -->
+  <section class="pt-32 pb-20 lg:pt-40 lg:pb-32">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-5xl mx-auto text-center">
+        <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
+          <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
+          {hero.eyebrow}
+        </p>
+        <h1 class="text-5xl lg:text-7xl font-bold mb-6" style="text-wrap: balance;">
+          {hero.headline}
+        </h1>
+        <p class="text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mb-16">
+          {hero.subheadline}
+        </p>
+      </div>
+
+      <div class="max-w-6xl mx-auto">
+        <p class="text-xs text-gray-500 uppercase tracking-wider mb-8 text-center">
+          {hero.organizations.title}
+        </p>
+        <div class="grid md:grid-cols-3 gap-6">
+          {hero.organizations.segments.map((segment) => (
+            <div class="bg-linear-to-br from-navy-800/50 to-navy-900/50 border border-cyan-500/10 rounded-lg p-8 hover:border-cyan-500/30 transition-all duration-300 group">
+              <h3 class="text-xl font-bold mb-4">{segment.title}</h3>
+              <p class="text-gray-400 mb-8 text-sm leading-relaxed">{segment.description}</p>
+              <button class="text-xs font-mono tracking-wider text-cyan-400 group-hover:text-cyan-600 transition-colors uppercase">
+                {segment.cta}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
   
   <!-- Challenge Section -->
   <section class="py-20 lg:py-32 bg-navy-800">
@@ -213,4 +246,35 @@ import {
       </div>
     </div>
   </section>
+
+  <!-- About Section (inline - 08 / WHO WE ARE) -->
+  <section class="py-20 lg:py-32 bg-white text-navy-900">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-4xl mx-auto text-center">
+        <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
+          <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full"></span>
+          {aboutSection.eyebrow}
+        </p>
+        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          {aboutSection.headline}
+        </h2>
+        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+          {aboutSection.description}
+        </p>
+        <p class="text-base text-gray-500 leading-relaxed">
+          {aboutSection.subheadline}
+        </p>
+        
+        <div class="flex items-center justify-center gap-8 mt-12">
+          {aboutSection.pillars.map((pillar) => (
+            <div class="flex items-center gap-2">
+              <span class="text-cyan-600 text-xl">{pillar.icon}</span>
+              <span class="text-xs font-mono tracking-wider uppercase text-gray-700">{pillar.label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
 </Layout>

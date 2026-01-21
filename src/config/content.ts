@@ -1,3 +1,4 @@
+ //index.astro page
 export const siteConfig = {
     name: "VetPulse",
     tagline: "Market Intelligence Infrastructure",
@@ -11,14 +12,14 @@ export const siteConfig = {
   
   export const navigation = {
     main: [
-      { label: "For Operators", href: "/for-operators" },
-      { label: "For Investors", href: "/for-investors" },
-      { label: "For Vendors", href: "/for-vendors" },
-      { label: "Resources", href: "/resources" }
+      { label: "For Operators", href: "/operators" },
+      { label: "For Investors", href: "/investors" },
+      { label: "For Vendors", href: "/vendors" },
+      { label: "Resources", href: "/blog" }
     ],
     cta: {
       label: "Request Coverage",
-      href: "/request-coverage"
+      href: "/contact"
     }
   };
   
@@ -46,19 +47,6 @@ export const siteConfig = {
         }
       ]
     }
-  };
-  
-  export const aboutSection = {
-    eyebrow: "01 / WHO WE ARE",
-    headline: "Data Engineering Meets Market Execution",
-    description: "VetPulse operates at the intersection of data engineering, market intelligence, and activation. The team combines automation engineers, AI practitioners, CRM and tooling specialists, and commercial operators focused on validation — not volume.",
-    subheadline: "We build decision-grade datasets, connect them into revenue systems, and support controlled activation when needed — so organizations can act only when market context is clear.",
-    pillars: [
-      { icon: "●", label: "DATA", color: "cyan" },
-      { icon: "●", label: "STRATEGY", color: "cyan" },
-      { icon: "●", label: "TOOLS", color: "yellow" },
-      { icon: "●", label: "ACTIVATION", color: "green" }
-    ]
   };
   
   export const challengeSection = {
@@ -222,7 +210,20 @@ export const siteConfig = {
       }
     ]
   };
-  
+
+   export const aboutSection = {
+    eyebrow: "08 / WHO WE ARE",  
+    headline: "Data Engineering Meets Market Execution",
+    description: "VetPulse operates at the intersection of data engineering, market intelligence, and activation. The team combines automation engineers, AI practitioners, CRM and tooling specialists, and commercial operators focused on validation — not volume.",
+    subheadline: "We build decision-grade datasets, connect them into revenue systems, and support controlled activation when needed — so organizations can act only when market context is clear.",
+    pillars: [
+      { icon: "●", label: "DATA", color: "cyan" },
+      { icon: "●", label: "STRATEGY", color: "cyan" },
+      { icon: "●", label: "TOOLS", color: "yellow" },
+      { icon: "●", label: "ACTIVATION", color: "green" }
+    ]
+  };  
+
   export const platformStandards = {
     title: "STANDARDS",
     links: [
@@ -245,3 +246,229 @@ export const siteConfig = {
     contact: "contact@vetpulse.ai"
   };
   
+  
+//operators.astro page
+export const operatorsPageFull = {
+    hero: {
+      eyebrow: "VETERINARY OPERATORS & NETWORKS",
+      headline: "Clarity Across Every Clinic You Operate.",
+      description: "VetPulse gives multi-site veterinary operators a real-time view of hiring reality, competitive pressure, and portfolio health — market by market.",
+      cta: "Discuss My Operating Footprint",
+      visualization: {
+        label: "LIVE_MONITORING",
+        value: "60+ Locations",
+        subtitle: "Portfolio Optimization Active"
+      }
+    },
+    
+    operatorReality: {
+      eyebrow: "THE OPERATOR REALITY",
+      headline: "Operating at Scale Without Visibility Is Expensive",
+      description: "As veterinary networks grow, decision-making becomes harder — not easier. Most operators face the same constraints:",
+      challenges: [
+        "Hiring decisions are made without knowing the true addressable talent pool",
+        "Clinics compete for the same candidates without geographic clarity",
+        "Competitive expansion happens quietly, market by market",
+        "Reputation and operational risks surface late, after impact is felt"
+      ],
+      callout1: "Effort is rarely the issue.",
+      callout2: "Market visibility is.",
+      footer: "VetPulse exists to make operating reality visible before problems compound."
+    },
+  
+    unlocks: {
+      eyebrow: "WHAT VETPULSE UNLOCKS",
+      headline: "What VetPulse Unlocks for Operators",
+      cards: [
+        {
+          title: "Hiring Reality, Not Guesswork",
+          description: "Understand how many qualified DVMs, RVTs, and LVTs exist within realistic hiring distance of each clinic. Prioritize locations based on actual market capacity, not assumptions."
+        },
+        {
+          title: "Competitive Pressure, Clearly Mapped",
+          description: "See where competitors are opening, expanding, or consolidating around your footprint — and how that affects staffing, pricing, and growth."
+        },
+        {
+          title: "Portfolio Visibility at Scale",
+          description: "Monitor reputation and operational risk across all locations without manual reporting or delayed signals."
+        }
+      ]
+    },
+  
+    support: {
+      eyebrow: "HOW VETPULSE SUPPORTS OPERATORS",
+      headline: "Built for Multi-Site Operations",
+      content: [
+        {
+          paragraph: "VetPulse gives operators a unified workforce view across all 50 state licensing boards — validated through digital discovery and mapped directly to their clinic footprint."
+        },
+        {
+          paragraph: "This allows teams to assess hiring feasibility before opening roles, understand competitive pressure before it affects retention, and surface portfolio risk before it compounds across locations."
+        },
+        {
+          paragraph: "Where appropriate, optional activation enables operators to validate hiring assumptions directly in the market — turning insight into action without relying on external recruiters or guesswork."
+        }
+      ]
+    },
+  
+    proof: {
+      eyebrow: "PROOF",
+      headline: "Used by Multi-Site Operators Nationwide",
+      description: "A 60-clinic veterinary network hired VetPulse to build a targeted DVM dataset, validate addressable hiring markets by location, and activate direct candidate engagement — completing 20+ hires while reducing reliance on external recruiting agencies."
+    },
+  
+    cta: {
+      headline: "See Your True Hiring Coverage by Location",
+      description: "Understand what's possible — before roles stay open for months.",
+      buttonText: "Discuss My Operating Footprint"
+    }
+  };
+  
+//investors.astro page
+export const investorsPageFull = {
+    hero: {
+      eyebrow: "PRIVATE EQUITY & OWNERS",
+      headline: "Make Capital Decisions with Market Clarity",
+      description: "VetPulse provides pre-LOI visibility into talent availability, competitive saturation, and ownership dynamics — before capital is committed.",
+      cta: "Request Market Intelligence",
+      visualization: {
+        label: "Deal Flow Analysis",
+        value: "98.2%",
+        subtitle: "Data Accuracy (Verified)"
+      }
+    },
+    
+    peReality: {
+      eyebrow: "THE PE REALITY",
+      headline: "Most Diligence Happens with Incomplete Inputs",
+      description: "In veterinary M&A, critical inputs often surface too late:",
+      challenges: [
+        "Talent availability is assessed post-close",
+        "Competitive density is estimated, not measured",
+        "Ownership structures are opaque",
+        "Market dynamics are inferred from limited samples"
+      ],
+      callout1: "These gaps don't just slow deals — they create hidden risk.",
+      callout2: "VetPulse exists to remove unknowns before they become liabilities."
+    },
+  
+    unlocks: {
+      eyebrow: "WHAT VETPULSE UNLOCKS",
+      headline: "What VetPulse Unlocks for Investors",
+      cards: [
+        {
+          title: "Capital Decisions with Pre-LOI Clarity",
+          description: "Validate whether a market can support staffing, growth, and operational stability before submitting a Letter of Intent."
+        },
+        {
+          title: "De Novo Expansion Without Blind Spots",
+          description: "Identify underserved markets, confirm hiring feasibility, and assess competitive intensity before committing capital."
+        },
+        {
+          title: "Portfolio Risk Surfaced Early",
+          description: "Track consolidation, reputation decline, and talent movement across portfolio geographies before issues compound."
+        }
+      ]
+    },
+  
+    diligence: {
+      eyebrow: "BUILT FOR DILIGENCE",
+      headline: "Designed for Decision-Making, Not Dashboards",
+      content: [
+        {
+          paragraph: "VetPulse datasets are built for diligence and portfolio oversight — not monitoring theater."
+        },
+        {
+          paragraph: "Ownership-aware practice mapping unmasks MSOs and shell LLCs. National workforce visibility is grounded in licensing data, not samples. Geospatial competition analysis operates at drive-time level, not ZIP codes. Reputation and sentiment signals are tracked over time, not extracted in isolation."
+        },
+        {
+          paragraph: "The result is evidence-based confidence, not narrative reassurance."
+        }
+      ]
+    },
+  
+    proof: {
+      eyebrow: "PROOF",
+      headline: "Supporting Large-Scale Investment Decisions",
+      description: "A corporate veterinary group operating 400+ locations used VetPulse to unify 125,000 licensed veterinarians, map addressable hiring markets per clinic, and deploy the dataset directly into Greenhouse for immediate operational use."
+    },
+  
+    cta: {
+      headline: "Clarity Before Capital",
+      description: "If you need market evidence before committing capital, VetPulse is built for that moment.",
+      buttonText: "Request Market Intelligence"
+    }
+  };
+
+//vendors.astro page
+export const vendorsPageFull = {
+    hero: {
+      eyebrow: "VENDORS & SERVICE PROVIDERS",
+      headline: "Design Revenue Coverage Around Reality",
+      description: "VetPulse helps animal health vendors design territories, prioritize accounts, and focus revenue effort where it actually converts.",
+      cta: "Optimize My Territory Coverage",
+      visualization: {
+        label: "TERRITORY_HEATMAP_V4",
+        value: "Active",
+        subtitle: "Coverage Optimization"
+      }
+    },
+    
+    vendorReality: {
+      eyebrow: "THE VENDOR REALITY",
+      headline: "Most Sales Coverage Is Built on Broken Inputs",
+      description: "Revenue teams operate with:",
+      challenges: [
+        "Outdated or incomplete practice registries",
+        "Ownership changes that break account structures",
+        "Territories assigned by geography, not opportunity",
+        "Reps spending time on closed, relocated, or unreachable practices"
+      ],
+      callout1: "Scripts and tooling can't fix bad inputs.",
+      callout2: "VetPulse fixes the market map itself."
+    },
+  
+    unlocks: {
+      eyebrow: "WHAT VETPULSE UNLOCKS",
+      headline: "What VetPulse Unlocks for Vendors",
+      cards: [
+        {
+          title: "Territories Built on Market Density",
+          description: "Design sales coverage around practice concentration, revenue potential, and competitive dynamics — not arbitrary zip codes."
+        },
+        {
+          title: "Capability-Based Targeting",
+          description: "Prioritize accounts based on actual services, equipment, and scale. Avoid selling products to practices that cannot operationalize them."
+        },
+        {
+          title: "Fewer Wasted Reps, Better Coverage",
+          description: "Eliminate effort spent on closed or misclassified accounts. Focus on validated practices with verified decision-makers."
+        }
+      ]
+    },
+  
+    gtmFit: {
+      eyebrow: "FIT WITH REVENUE OPERATIONS",
+      headline: "Designed to Plug into Your GTM Stack",
+      content: [
+        {
+          paragraph: "VetPulse delivers CRM-ready datasets with ownership-aware account structures and territory-level segmentation — designed to plug directly into Salesforce, HubSpot, or your GTM stack."
+        },
+        {
+          paragraph: "Optional activation can be used to validate targeting assumptions directly in the market, ensuring coverage models match reality before scaling."
+        }
+      ]
+    },
+  
+    proof: {
+      eyebrow: "PROOF",
+      headline: "Used by Animal Health Vendors",
+      description: "Pharma and equipment vendors use VetPulse to reduce wasted rep coverage and improve account prioritization through capability scoring and ownership verification."
+    },
+  
+    cta: {
+      headline: "See What Your Market Really Looks Like",
+      description: "Before you rebalance territories or hire more reps, validate the ground truth.",
+      buttonText: "Optimize My Territory Coverage"
+    }
+  };
