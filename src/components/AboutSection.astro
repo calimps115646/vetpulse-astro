@@ -1,0 +1,32 @@
+---
+import { aboutSection } from '../config/content';
+---
+
+<section class="py-20 lg:py-32 bg-white text-navy-900">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
+        <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full"></span>
+        {aboutSection.eyebrow}
+      </p>
+      <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+        {aboutSection.headline}
+      </h2>
+      <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+        {aboutSection.description}
+      </p>
+      <p class="text-base text-gray-500 leading-relaxed">
+        {aboutSection.subheadline}
+      </p>
+      
+      <div class="flex items-center justify-center gap-8 mt-12">
+        {aboutSection.pillars.map((pillar) => (
+          <div class="flex items-center gap-2">
+            <span class="text-cyan-600 text-xl">{pillar.icon}</span>
+            <span class="text-xs font-mono tracking-wider uppercase text-gray-700">{pillar.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

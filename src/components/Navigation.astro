@@ -1,0 +1,29 @@
+---
+import { siteConfig, navigation } from '../config/content';
+---
+
+<nav class="fixed top-0 w-full bg-navy-800/95 backdrop-blur-sm border-b border-white/5 z-50">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-12">
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-6 h-6 bg-cyan-500 rounded-sm"></div>
+          <span class="font-bold text-lg tracking-tight">{siteConfig.name}</span>
+        </a>
+        <div class="hidden md:flex items-center gap-8">
+          {navigation.main.map((item) => (
+            <a href={item.href} class="text-sm text-gray-300 hover:text-white transition-colors">
+              {item.label}
+            </a>
+          ))}
+        </div>
+      </div>
+      <a 
+        href={navigation.cta.href} 
+        class="bg-cyan-500 hover:bg-cyan-600 text-navy-900 px-6 py-3 rounded-sm font-semibold text-sm tracking-wide transition-all duration-200"
+      >
+        {navigation.cta.label}
+      </a>
+    </div>
+  </div>
+</nav>

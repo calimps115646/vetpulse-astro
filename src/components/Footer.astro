@@ -1,0 +1,49 @@
+---
+import { siteConfig, platformLinks, platformStandards } from '../config/content';
+---
+
+<footer class="bg-navy-800 border-t border-white/5 py-12">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2">
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-6 h-6 bg-cyan-500 rounded-sm"></div>
+          <span class="font-bold text-lg">{siteConfig.name}</span>
+        </div>
+        <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-md">
+          {siteConfig.description}
+        </p>
+        <a href={`mailto:${siteConfig.contact}`} class="text-cyan-500 hover:text-cyan-600 text-sm">
+          {siteConfig.contact}
+        </a>
+      </div>
+      
+      <div>
+        <h4 class="text-xs font-mono tracking-wider uppercase text-gray-500 mb-4">{platformLinks.title}</h4>
+        <ul class="space-y-2">
+          {platformLinks.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white text-sm">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <div>
+        <h4 class="text-xs font-mono tracking-wider uppercase text-gray-500 mb-4">{platformStandards.title}</h4>
+        <ul class="space-y-2">
+          {platformStandards.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-400 hover:text-white text-sm">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="flex items-center justify-between pt-8 border-t border-white/5">
+      <p class="text-gray-500 text-xs">{siteConfig.footer.copyright}</p>
+      <p class="text-gray-500 text-xs">{siteConfig.footer.locations}</p>
+    </div>
+  </div>
+</footer>
