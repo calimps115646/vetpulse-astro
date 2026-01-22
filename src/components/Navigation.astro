@@ -2,28 +2,94 @@
 import { siteConfig, navigation } from '../config/content';
 ---
 
-<nav class="fixed top-0 w-full bg-navy-800/95 backdrop-blur-sm border-b border-white/5 z-50">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex items-center gap-12">
-        <a href="/" class="flex items-center gap-2">
-          <div class="w-6 h-6 bg-cyan-500 rounded-sm"></div>
-          <span class="font-bold text-lg tracking-tight">{siteConfig.name}</span>
-        </a>
-        <div class="hidden md:flex items-center gap-8">
+<nav class="fixed top-0 w-full bg-white backdrop-blur-sm border-b border-gray-200 z-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <!-- Left: Logo + Tagline -->
+      <a href="/" class="flex items-center gap-2 flex-shrink-0 min-w-0">
+        <!-- Logo Box with V -->
+        <div class="w-6 h-6 bg-[#0a1530] rounded-sm flex items-center justify-center flex-shrink-0">
+          <span class="font-bold text-[#0eb4b3] text-sm">V</span>
+        </div>
+        <!-- Logo Text - VETPULSE uppercase -->
+        <span class="font-bold text-base sm:text-lg tracking-tight text-[#0a1530] uppercase whitespace-nowrap">
+          {siteConfig.name}
+        </span>
+        <!-- Separator - Hidden on mobile/tablet, visible on desktop -->
+        <div class="hidden xl:block h-5 w-px bg-gray-300 mx-3"></div>
+        <!-- Tagline - Hidden on mobile/tablet, visible on desktop -->
+        <span class="hidden xl:block text-[12px] text-[#939292] tracking-wider uppercase whitespace-nowrap font-mono" style="font-family: 'Montserrat', monospace; font-weight: 300; letter-spacing: 0.08em;">
+          {siteConfig.tagline}
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links - Hidden on mobile -->
+      <div class="hidden lg:flex items-center justify-center flex-1 mx-8">
+        <div class="flex items-center gap-6 xl:gap-8">
           {navigation.main.map((item) => (
-            <a href={item.href} class="text-sm text-gray-300 hover:text-white transition-colors">
+            <a 
+              href={item.href} 
+              class="text-[15px] text-[#575657] hover:text-[#0a1530] font-medium transition-colors duration-200 whitespace-nowrap"
+            >
               {item.label}
             </a>
           ))}
         </div>
       </div>
-      <a 
-        href={navigation.cta.href} 
-        class="bg-cyan-500 hover:bg-cyan-600 text-navy-900 px-6 py-3 rounded-sm font-semibold text-sm tracking-wide transition-all duration-200"
-      >
-        {navigation.cta.label}
-      </a>
+
+      <!-- Right: CTA Button + Mobile Menu Toggle -->
+      <div class="flex items-center gap-3">
+        <!-- CTA Button - Always visible -->
+        <a 
+          href={navigation.cta.href} 
+          class="bg-[#0eb4b3] hover:bg-[#0d9b9a] text-white px-4 sm:px-6 py-2.5 rounded text-sm font-semibold tracking-wide transition-all duration-200 whitespace-nowrap flex-shrink-0"
+        >
+          {navigation.cta.label}
+        </a>
+
+        <!-- Mobile Menu Toggle Button - Only visible on mobile -->
+        <button 
+          type="button"
+          id="mobile-menu-toggle"
+          class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-[#575657] hover:text-[#0a1530] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#0eb4b3] transition-colors"
+          aria-expanded="false"
+          aria-label="Open navigation menu"
+        >
+          <span class="sr-only">Open menu</span>
+          <!-- Hamburger Icon -->
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu - Hidden by default -->
+    <div id="mobile-menu" class="hidden lg:hidden pb-4 pt-2">
+      <div class="flex flex-col gap-3">
+        {navigation.main.map((item) => (
+          <a 
+            href={item.href} 
+            class="text-[15px] text-[#575657] hover:text-[#0a1530] font-medium transition-colors duration-200 px-2 py-2 rounded hover:bg-gray-50"
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
     </div>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle functionality
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('mobile-menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    
+    toggle?.addEventListener('click', () => {
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!isExpanded));
+      menu?.classList.toggle('hidden');
+    });
+  });
+</script>

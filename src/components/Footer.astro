@@ -1,52 +1,58 @@
-  ---
-  import { siteConfig, platformLinks, platformStandards, companyInfo } from '../config/content';
-  ---
+---
+import { siteConfig, platformLinks, platformStandards, companyInfo } from '../config/content';
+---
 
-  <footer class="bg-navy-800 border-t border-white/5 py-12">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid md:grid-cols-4 gap-12 mb-12">
-        <div class="md:col-span-2">
-          <div class="flex items-center gap-2 mb-4">
-            <div class="w-6 h-6 bg-cyan-500 rounded-sm"></div>
-            <span class="font-bold text-lg">{siteConfig.name}</span>
-          </div>
-          <p class="text-gray-400 text-sm leading-relaxed max-w-md">
-            Market intelligence infrastructure for the veterinary economy.
-          </p>
-          <p class="text-gray-400 text-sm leading-relaxed mb-4 max-w-md">
-            Built to restore market context before decisions are made.
-          </p>
-          <a href={`mailto:${companyInfo.contact}`} class="text-cyan-500 hover:text-cyan-600 text-sm">
-            {companyInfo.contact}
-          </a>
+
+<footer class="bg-white border-t border-gray-200 py-12">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12">
+      <!-- Left: VETPULSE branding and description -->
+      <div class="lg:w-auto">
+        <div class="mb-4">
+          <span class="font-bold text-lg text-[#0a1530] uppercase tracking-tight">{siteConfig.name}</span>
         </div>
-        
-        <div>
-          <h4 class="text-xs font-mono tracking-wider uppercase text-gray-500 mb-4">{platformLinks.title}</h4>
-          <ul class="space-y-2">
-            {platformLinks.links.map((link) => (
-              <li>
-                <a href={link.href} class="text-gray-400 hover:text-white text-sm">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-        
-        <div>
-          <h4 class="text-xs font-mono tracking-wider uppercase text-gray-500 mb-4">{platformStandards.title}</h4>
-          <ul class="space-y-2">
-            {platformStandards.links.map((link) => (
-              <li>
-                <a href={link.href} class="text-gray-400 hover:text-white text-sm">{link.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
+        <p class="text-[#737373] text-sm leading-relaxed max-w-md mb-2">
+          Market intelligence infrastructure for the veterinary economy.
+        </p>
+        <p class="text-[#737373] text-sm leading-relaxed mb-4 max-w-md">
+          Built to restore market context before decisions are made.
+        </p>
+        <a 
+          href={`mailto:${companyInfo.contact}`} 
+          class="text-[#0fb4b3] hover:underline text-sm transition-all duration-200 inline-block"
+        >
+          {companyInfo.contact}
+        </a>
       </div>
       
-      <div class="flex items-center justify-between pt-8 border-t border-white/5">
-        <p class="text-gray-500 text-xs">{siteConfig.footer.copyright}</p>
-        <p class="text-gray-500 text-xs">{siteConfig.footer.locations}</p>
+      <!-- Middle: PLATFORM -->
+      <div class="lg:w-auto">
+        <h4 class="text-xs font-mono tracking-wider uppercase text-[#939292] mb-4">{platformLinks.title}</h4>
+        <ul class="space-y-2">
+          {platformLinks.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-600 hover:text-[#0a1530] text-sm transition-colors duration-200">{link.label}</a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Right: STANDARDS -->
+      <div class="lg:w-auto">
+        <h4 class="text-xs font-mono tracking-wider uppercase text-[#939292] mb-4">{platformStandards.title}</h4>
+        <ul class="space-y-2">
+          {platformStandards.links.map((link) => (
+            <li>
+              <a href={link.href} class="text-gray-600 hover:text-[#0a1530] text-sm transition-colors duration-200">{link.label}</a>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
-  </footer>
+    
+    <div class="flex flex-col sm:flex-row items-center justify-between pt-8 border-t border-gray-200 gap-4">
+      <p class="text-[#939292] text-xs font-mono">{siteConfig.footer.copyright}</p>
+      <p class="text-[#939292] text-xs font-mono tracking-wide">{siteConfig.footer.locations}</p>
+    </div>
+  </div>
+</footer>
