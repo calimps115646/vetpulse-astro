@@ -1,4 +1,4 @@
- //index.astro page
+//index.astro page
 export const siteConfig = {
     name: "VetPulse",
     tagline: "Market Intelligence Infrastructure",
@@ -246,7 +246,6 @@ export const siteConfig = {
     contact: "contact@vetpulse.ai"
   };
   
-  
 //operators.astro page
 export const operatorsPageFull = {
     hero: {
@@ -471,4 +470,37 @@ export const vendorsPageFull = {
       description: "Before you rebalance territories or hire more reps, validate the ground truth.",
       buttonText: "Optimize My Territory Coverage"
     }
+  };
+
+//blog.astro page
+export const blogPage = {
+    eyebrow: "INTELLIGENCE BRIEFS",
+    headline: "Market Research & Insights",
+    description: "Data-driven insights on veterinary workforce trends, market consolidation, and commercial intelligence.",
+    articles: [
+      {
+        category: "WORKFORCE INTELLIGENCE",
+        readTime: "6 MIN READ",
+        title: "Why Veterinary Workforce Data Accuracy Matters for Multi-Site Operators",
+        description: "State licensing boards provide incomplete pictures. Here's why accuracy in workforce data directly impacts hiring velocity and territory planning.",
+        slug: "veterinary-workforce-data-accuracy",
+        coverPlaceholder: "ARTICLE_COVER"
+      },
+      {
+        category: "M&A INTELLIGENCE",
+        readTime: "7 MIN READ",
+        title: "Pre-LOI Diligence: What PE Firms Miss in Veterinary M&A",
+        description: "Most diligence happens too late. Here's what smart investors validate before submitting Letters of Intent in veterinary consolidation deals.",
+        slug: "pre-loi-diligence-veterinary-ma",
+        coverPlaceholder: "ARTICLE_COVER"
+      },
+      {
+        category: "COMMERCIAL INTELLIGENCE",
+        readTime: "5 MIN READ",
+        title: "How Animal Health Vendors Should Actually Design Sales Territories",
+        description: "Most territories are built on broken inputs. Here's how to design coverage around market density and capability — not arbitrary zip codes.",
+        slug: "animal-health-vendor-sales-territories",
+        coverPlaceholder: "ARTICLE_COVER"
+      }
+    ]
   };

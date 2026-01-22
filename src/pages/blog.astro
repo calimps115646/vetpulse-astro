@@ -1,0 +1,81 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import { siteConfig } from '../config/content';
+
+// Get all published blog posts, sorted by date
+const allPosts = await getCollection('blog', ({ data }) => {
+  return data.published === true;
+});
+
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
+  
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4">
+          <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full inline-block mr-2"></span>
+          INTELLIGENCE BRIEFS
+        </p>
+        <h1 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+          Market Research & Insights
+        </h1>
+        <p class="text-xl text-gray-600 leading-relaxed">
+          Data-driven insights on veterinary workforce trends, market consolidation, and commercial intelligence.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="pb-20 lg:pb-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        {sortedPosts.map((post) => (
+          <article class="group cursor-pointer">
+            <!-- Article Cover Placeholder -->
+            <div class="bg-gray-100 border border-gray-200 rounded-lg mb-6 aspect-video flex items-center justify-center">
+              {post.data.cover ? (
+                <img src={post.data.cover} alt={post.data.title} class="w-full h-full object-cover rounded-lg" />
+              ) : (
+                <span class="text-gray-400 text-xs font-mono tracking-wider uppercase">
+                  ARTICLE_COVER
+                </span>
+              )}
+            </div>
+            
+            <!-- Article Meta -->
+            <div class="mb-4">
+              <p class="text-cyan-600 text-xs font-mono tracking-wider uppercase">
+                {post.data.category} • {post.data.readTime}
+              </p>
+            </div>
+            
+            <!-- Article Title -->
+            <h2 class="text-xl font-bold text-navy-900 mb-3 group-hover:text-cyan-600 transition-colors">
+              {post.data.title}
+            </h2>
+            
+            <!-- Article Description -->
+            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+              {post.data.excerpt}
+            </p>
+            
+            <!-- Read More Link - FIXED: Use post.id instead of post.slug -->
+            <a 
+              href={`/blog/${post.id}`} 
+              class="text-navy-900 text-sm font-semibold border-b-2 border-navy-900 hover:text-cyan-600 hover:border-cyan-600 transition-colors inline-block"
+            >
+              Read Article
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+</Layout>
