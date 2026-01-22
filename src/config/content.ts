@@ -504,3 +504,239 @@ export const blogPage = {
       }
     ]
   };
+
+//data-ethics.astro page
+export const dataEthicsPage = {
+  hero: {
+    headline: "Data Ethics at VetPulse",
+    description: "Market intelligence requires defensible data.",
+    intro: [
+      "VetPulse exists because the US veterinary market lacks a unified, accurate view of workforce ownership, and competitive dynamics. State licensing boards operate independently. Ownership structures are opaque. Digital footprints are fragmented.",
+      "Our responsibility is not just to aggregate data — it is to restore market context in a way organizations can rely on for hiring, investment, and revenue decisions.",
+      "This page explains how VetPulse builds datasets, what we explicitly exclude, and why these standards matter for organizations using VetPulse as decision infrastructure."
+    ]
+  },
+
+  ethicalFoundation: {
+    title: "Our Ethical Foundation",
+    intro: "VetPulse builds market intelligence from verifiable, defensible sources and applies governance at every stage of data collection, enrichment, and activation.",
+    principles: [
+      {
+        title: "Accuracy is more valuable than speed",
+        description: null
+      },
+      {
+        title: "Validation matters more than volume",
+        description: null
+      },
+      {
+        title: "Context matters more than access",
+        description: null
+      }
+    ],
+    footer: "We would rather deliver less data with higher confidence than inflate coverage with unverifiable inputs."
+  },
+
+  useCaseGovernance: {
+    title: "Use-Case Governance (Design for Purpose)",
+    intro: "VetPulse does not operate as a self-serve platform.",
+    description: "Market intelligence infrastructure requires design for purpose — not unlimited access to raw data.",
+    governance: "Each engagement is scoped intentionally based on:",
+    criteria: [
+      "Decision context (hiring, diligence, expansion, revenue)",
+      "Acceptable use boundaries",
+      "Activation controls, if outreach is involved",
+      "Internal handling and access expectations"
+    ],
+    footer: "This governance ensures data is used as decision infrastructure, not as an indiscriminate execution engine.",
+    exclusions: {
+      title: "These exclusions are intentional. They reduce risk for our clients and ensure VetPulse datasets remain suitable for enterprise, diligence, and operational use.",
+      items: [
+        "Infer sensitive personal attributes",
+        "Automate outreach without explicit client governance"
+      ]
+    }
+  },
+
+  validation: {
+    title: "Validation Over Volume",
+    intro: "Every dataset VetPulse delivers includes:",
+    components: [
+      "Source attribution",
+      "Confidence indicators",
+      "Known limitations and exclusions"
+    ],
+    description: "We actively remove records that cannot be validated to our standards, even when doing so reduces apparent coverage.",
+    callout: "Accuracy compounds. Bad data creates liability."
+  },
+
+  dataSourcing: {
+    title: "How We Source Data",
+    intro: "VetPulse datasets are built from a combination of:",
+    sources: [
+      {
+        title: "Public regulatory sources",
+        description: "State veterinary licensing boards and other official registries"
+      },
+      {
+        title: "Public digital footprints",
+        description: "Practice websites, publicly available professional profiles, and published certifications"
+      },
+      {
+        title: "Commercial and public datasets",
+        description: "Geospatial, demographic, and market structure data used to contextualize supply and demand"
+      }
+    ],
+    footer: "All sources are cross-validated, normalized, and confidence-scored before inclusion in any client deliverable."
+  },
+
+  exclusions: {
+    title: "What We Explicitly Do Not Do",
+    intro: "VetPulse draws clear boundaries around data use.",
+    doNot: [
+      "Scrape private social networks or gated communities",
+      "Collect or sell consumer pet owner data",
+      "Sell raw contact lists or \"leads\"",
+      "Create surveillance tools"
+    ]
+  },
+
+  contact: {
+    title: "Questions or Concerns",
+    description: "For questions about our data practices or ethical standards, contact:",
+    email: "contact@vetpulse.ai"
+  }
+};
+
+//privacy-policy.astro page
+export const privacyPolicyPage = {
+  hero: {
+    headline: "Privacy Policy",
+    effectiveDate: "EFFECTIVE DATE: JANUARY 2026",
+    intro: [
+      "VetPulse treats privacy as part of decision-grade infrastructure, not as a compliance afterthought.",
+      "This policy explains what data we collect, how it is used, how it is protected, and the rights available to individuals whose data may be processed by VetPulse."
+    ]
+  },
+
+  scope: {
+    title: "1. Scope",
+    intro: "This policy applies to:",
+    items: [
+      "Visitors to vetpulse.ai",
+      "Individuals whose professional or business information appears in VetPulse datasets",
+      "Clients and business contacts engaging with VetPulse services"
+    ]
+  },
+
+  dataCollection: {
+    title: "2. What Data We Collect",
+    sections: [
+      {
+        subtitle: "2.1 Website and Business Communications",
+        items: [
+          "Contact details submitted via forms or email",
+          "Business correspondence",
+          "Website analytics (IP address, device type, pages visited)"
+        ]
+      },
+      {
+        subtitle: "2.2 Market Intelligence Data",
+        description: "VetPulse processes professional and business information, including:",
+        items: [
+          "Licensed veterinary professionals (public regulatory data)",
+          "Veterinary practices and ownership structures",
+          "Publicly available employment and capability signals"
+        ],
+        footer: [
+          "VetPulse does not collect consumer pet owner data and does not process sensitive personal data categories (as defined under GDPR Article 9 or equivalent regulations).",
+          "Our processing focuses on market structure, not individual consumer behavior, medical records, or personal health information."
+        ]
+      }
+    ]
+  },
+
+  dataUse: {
+    title: "3. How We Use Data",
+    intro: "Data is processed to:",
+    items: [
+      "Deliver market intelligence and decision support to clients",
+      "Validate and improve dataset accuracy",
+      "Fulfill contractual obligations",
+      "Comply with legal and regulatory requirements"
+    ],
+    footer: "We do not sell personal data to third parties."
+  },
+
+  legalBasis: {
+    title: "4. Legal Basis for Processing (GDPR)",
+    intro: "Where GDPR applies, VetPulse processes data under one or more of the following lawful bases:",
+    items: [
+      "Legitimate interests (market intelligence, research, and validation)",
+      "Contractual necessity",
+      "Legal obligation"
+    ],
+    footer: "Legitimate interest assessments are conducted to ensure processing does not override individual rights."
+  },
+
+  dataProtection: {
+    title: "5. Data Protection and Security",
+    intro: "VetPulse implements appropriate technical and organizational safeguards, including:",
+    items: [
+      "Encryption in transit and at rest",
+      "Role-based access controls",
+      "Restricted internal access to datasets",
+      "Retention policies aligned to purpose and legal requirements"
+    ]
+  },
+
+  dataRetention: {
+    title: "6. Data Retention",
+    intro: "Data is retained only as long as necessary to:",
+    items: [
+      "Fulfill the purpose for which it was collected",
+      "Meet contractual obligations",
+      "Satisfy legal or regulatory requirements"
+    ]
+  },
+
+  dataSharing: {
+    title: "7. Data Sharing",
+    intro: "Data may be shared with:",
+    items: [
+      "Clients, as part of contracted deliverables",
+      "Service providers supporting infrastructure operations (under confidentiality agreements)"
+    ],
+    footer: "VetPulse does not permit onward resale or uncontrolled redistribution of datasets."
+  },
+
+  yourRights: {
+    title: "8. Your Rights",
+    intro: "Where applicable, individuals have the right to:",
+    items: [
+      "Access their data",
+      "Request correction of inaccurate data",
+      "Request deletion (subject to legal limitations)",
+      "Object to certain processing activities",
+      "Request restriction of processing"
+    ],
+    exercise: {
+      subtitle: "How to Exercise Your Rights",
+      description: "Requests can be made by emailing",
+      email: "privacy@vetpulse.ai",
+      requirements: "with:",
+      items: [
+        "Your name and contact information",
+        "A description of your request",
+        "Any information that will help us locate your data"
+      ],
+      footer: "Verified requests will be addressed within the timeframes required by applicable law."
+    }
+  },
+
+  contact: {
+    title: "9. Contact",
+    description: "For privacy-related inquiries:",
+    email: "contact@vetpulse.ai"
+  }
+};

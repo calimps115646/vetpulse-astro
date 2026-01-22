@@ -1,0 +1,197 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { privacyPolicyPage } from '../config/content';
+---
+
+<Layout title="Privacy Policy | VetPulse">
+  <main class="bg-navy-900 text-white">
+    
+    <!-- Hero Section -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">
+        {privacyPolicyPage.hero.headline}
+      </h1>
+      <p class="text-sm font-mono tracking-wider text-gray-500 mb-8">
+        {privacyPolicyPage.hero.effectiveDate}
+      </p>
+      {privacyPolicyPage.hero.intro.map((paragraph) => (
+        <p class="text-gray-400 mb-6 leading-relaxed">
+          {paragraph}
+        </p>
+      ))}
+    </section>
+
+    <!-- Scope -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.scope.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.scope.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        {privacyPolicyPage.scope.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- What Data We Collect -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-8">
+        {privacyPolicyPage.dataCollection.title}
+      </h2>
+      
+      {privacyPolicyPage.dataCollection.sections.map((section) => (
+        <div class="mb-8">
+          <h3 class="text-xl font-semibold mb-4">{section.subtitle}</h3>
+          {section.description && (
+            <p class="text-gray-400 mb-4 leading-relaxed">{section.description}</p>
+          )}
+          <ul class="list-disc pl-6 space-y-2 mb-4">
+            {section.items.map((item) => (
+              <li class="text-gray-400">{item}</li>
+            ))}
+          </ul>
+          {section.footer && section.footer.map((paragraph) => (
+            <p class="text-gray-400 mb-4 leading-relaxed">{paragraph}</p>
+          ))}
+        </div>
+      ))}
+    </section>
+
+    <!-- How We Use Data -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.dataUse.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.dataUse.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {privacyPolicyPage.dataUse.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 leading-relaxed">
+        {privacyPolicyPage.dataUse.footer}
+      </p>
+    </section>
+
+    <!-- Legal Basis for Processing (GDPR) -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.legalBasis.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.legalBasis.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {privacyPolicyPage.legalBasis.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 leading-relaxed">
+        {privacyPolicyPage.legalBasis.footer}
+      </p>
+    </section>
+
+    <!-- Data Protection and Security -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.dataProtection.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.dataProtection.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        {privacyPolicyPage.dataProtection.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Data Retention -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.dataRetention.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.dataRetention.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        {privacyPolicyPage.dataRetention.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Data Sharing -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.dataSharing.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.dataSharing.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {privacyPolicyPage.dataSharing.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 leading-relaxed">
+        {privacyPolicyPage.dataSharing.footer}
+      </p>
+    </section>
+
+    <!-- Your Rights -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.yourRights.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.yourRights.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-8">
+        {privacyPolicyPage.yourRights.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      
+      <h3 class="text-xl font-semibold mb-4">
+        {privacyPolicyPage.yourRights.exercise.subtitle}
+      </h3>
+      <p class="text-gray-400 mb-2 leading-relaxed">
+        {privacyPolicyPage.yourRights.exercise.description}
+        <a href={`mailto:${privacyPolicyPage.yourRights.exercise.email}`} 
+           class="text-cyan-500 hover:text-cyan-600">
+          {privacyPolicyPage.yourRights.exercise.email}
+        </a>
+        {' '}{privacyPolicyPage.yourRights.exercise.requirements}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {privacyPolicyPage.yourRights.exercise.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 leading-relaxed">
+        {privacyPolicyPage.yourRights.exercise.footer}
+      </p>
+    </section>
+
+    <!-- Contact -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12 pb-20">
+      <h2 class="text-3xl font-bold mb-6">
+        {privacyPolicyPage.contact.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {privacyPolicyPage.contact.description}
+      </p>
+      <a href={`mailto:${privacyPolicyPage.contact.email}`} 
+         class="text-cyan-500 hover:text-cyan-600">
+        {privacyPolicyPage.contact.email}
+      </a>
+    </section>
+
+  </main>
+</Layout>

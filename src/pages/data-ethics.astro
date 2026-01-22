@@ -1,0 +1,149 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { dataEthicsPage } from '../config/content';
+---
+
+<Layout title="Data Ethics | VetPulse">
+  <main class="bg-navy-900 text-white">
+    
+    <!-- Hero Section -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-20">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">
+        {dataEthicsPage.hero.headline}
+      </h1>
+      <p class="text-xl text-gray-300 mb-8">
+        {dataEthicsPage.hero.description}
+      </p>
+      {dataEthicsPage.hero.intro.map((paragraph) => (
+        <p class="text-gray-400 mb-6 leading-relaxed">
+          {paragraph}
+        </p>
+      ))}
+    </section>
+
+    <!-- Ethical Foundation -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.ethicalFoundation.title}
+      </h2>
+      <p class="text-gray-400 mb-8 leading-relaxed">
+        {dataEthicsPage.ethicalFoundation.intro}
+      </p>
+      <p class="text-gray-300 mb-4">We believe:</p>
+      <ul class="space-y-3 mb-8">
+        {dataEthicsPage.ethicalFoundation.principles.map((principle) => (
+          <li class="text-gray-400">
+            <strong class="text-white">{principle.title}</strong>
+          </li>
+        ))}
+      </ul>
+      <p class="text-gray-400 leading-relaxed">
+        {dataEthicsPage.ethicalFoundation.footer}
+      </p>
+    </section>
+
+    <!-- Use-Case Governance -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.useCaseGovernance.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.useCaseGovernance.intro}
+      </p>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.useCaseGovernance.description}
+      </p>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.useCaseGovernance.governance}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {dataEthicsPage.useCaseGovernance.criteria.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 mb-8 leading-relaxed">
+        {dataEthicsPage.useCaseGovernance.footer}
+      </p>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.useCaseGovernance.exclusions.title}
+      </p>
+      <ul class="list-disc pl-6 space-y-2">
+        {dataEthicsPage.useCaseGovernance.exclusions.items.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Validation Over Volume -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.validation.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.validation.intro}
+      </p>
+      <ul class="list-disc pl-6 space-y-2 mb-6">
+        {dataEthicsPage.validation.components.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.validation.description}
+      </p>
+      <p class="text-gray-300 font-semibold">
+        {dataEthicsPage.validation.callout}
+      </p>
+    </section>
+
+    <!-- How We Source Data -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.dataSourcing.title}
+      </h2>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        {dataEthicsPage.dataSourcing.intro}
+      </p>
+      
+      {dataEthicsPage.dataSourcing.sources.map((source) => (
+        <div class="mb-6">
+          <h3 class="text-lg font-semibold mb-2">{source.title}</h3>
+          <p class="text-gray-400 leading-relaxed">{source.description}</p>
+        </div>
+      ))}
+      
+      <p class="text-gray-400 mt-8 leading-relaxed">
+        {dataEthicsPage.dataSourcing.footer}
+      </p>
+    </section>
+
+    <!-- What We Explicitly Do Not Do -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.exclusions.title}
+      </h2>
+      <p class="text-gray-400 mb-6 leading-relaxed">
+        {dataEthicsPage.exclusions.intro}
+      </p>
+      <p class="text-gray-400 mb-4">We do not:</p>
+      <ul class="list-disc pl-6 space-y-2">
+        {dataEthicsPage.exclusions.doNot.map((item) => (
+          <li class="text-gray-400">{item}</li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Questions or Concerns -->
+    <section class="max-w-4xl mx-auto px-6 lg:px-8 py-12 pb-20">
+      <h2 class="text-3xl font-bold mb-6">
+        {dataEthicsPage.contact.title}
+      </h2>
+      <p class="text-gray-400 mb-4 leading-relaxed">
+        {dataEthicsPage.contact.description}
+      </p>
+      <a href={`mailto:${dataEthicsPage.contact.email}`} class="text-cyan-500 hover:text-cyan-600">
+        {dataEthicsPage.contact.email}
+      </a>
+    </section>
+
+  </main>
+</Layout>
