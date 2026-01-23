@@ -102,6 +102,7 @@ export const siteConfig = {
     headline: "For Veterinary Operators & Networks",
     description: "VetPulse gives operators a real-time view of talent availability, competitive pressure, and portfolio health — across every market they operate in.",
     cta: "REVIEW MY OPERATING MARKETS",
+    unlocksLabel: "WHAT VETPULSE UNLOCKS",
     benefits: [
       {
         title: "Hiring Reality, Not Guesswork",
@@ -127,6 +128,7 @@ export const siteConfig = {
     headline: "For Private Equity & Owners",
     description: "VetPulse delivers pre-LOI clarity on market conditions, talent pools, and competitive dynamics — so capital decisions are grounded in evidence, not estimates.",
     cta: "REVIEW MARKET INTELLIGENCE",
+    unlocksLabel: "WHAT VETPULSE UNLOCKS",
     benefits: [
       {
         title: "Capital Decisions with Pre-LOI Clarity",
@@ -152,6 +154,7 @@ export const siteConfig = {
     headline: "For Vendors & Service Providers",
     description: "VetPulse is not a lead database. It is a market coverage engine designed to determine where revenue effort should exist at all.",
     cta: "REVIEW TERRITORY REALITY",
+    unlocksLabel: "WHAT VETPULSE UNLOCKS",
     benefits: [
       {
         title: "Territories Designed Around Real Market Density",
@@ -170,7 +173,7 @@ export const siteConfig = {
       label: "PROOF",
       quote: "Pharma and equipment vendors use VetPulse to reduce wasted rep coverage and improve account prioritization through capability scoring and ownership verification."
     }
-  };
+  };  
   
   export const engagementModel = {
     eyebrow: "06 / ENGAGEMENT MODEL",

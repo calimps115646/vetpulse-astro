@@ -16,72 +16,153 @@ import {
 
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
   
-  <!-- Hero Section (inline) -->
-  <section class="pt-32 pb-20 lg:pt-40 lg:pb-32">
+  <!-- Hero Section (updated) -->
+  <section class="pt-32 pb-20 lg:pt-32 lg:pb-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="max-w-5xl mx-auto text-center">
-        <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
-          <span class="w-2 h-2 bg-cyan-500 rounded-full"></span>
-          {hero.eyebrow}
-        </p>
-        <h1 class="text-5xl lg:text-7xl font-bold mb-6" style="text-wrap: balance;">
-          {hero.headline}
-        </h1>
-        <p class="text-xl lg:text-2xl text-gray-400 max-w-3xl mx-auto mb-16">
-          {hero.subheadline}
-        </p>
-      </div>
+      <div class="grid lg:grid-cols-2 gap-16 items-start">
+        <!-- Left Column -->
+        <div>
+          <!-- Hero Content -->
+          <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6">
+            {hero.eyebrow}
+          </p>
+          <h1 class="text-5xl lg:text-6xl font-bold mb-6 text-[#0b1530] leading-tight" style="text-wrap: balance;">
+            {hero.headline}
+          </h1>
+          <p class="text-lg text-[#676666] mb-6 max-w-xl">
+            Custom veterinary intelligence for hiring, expansion, and<br />revenue decisions in fragmented US markets.
+          </p>
 
-      <div class="max-w-6xl mx-auto">
-        <p class="text-xs text-gray-500 uppercase tracking-wider mb-8 text-center">
-          {hero.organizations.title}
-        </p>
-        <div class="grid md:grid-cols-3 gap-6">
-          {hero.organizations.segments.map((segment) => (
-            <div class="bg-linear-to-br from-navy-800/50 to-navy-900/50 border border-cyan-500/10 rounded-lg p-8 hover:border-cyan-500/30 transition-all duration-300 group">
-              <h3 class="text-xl font-bold mb-4">{segment.title}</h3>
-              <p class="text-gray-400 mb-8 text-sm leading-relaxed">{segment.description}</p>
-              <button class="text-xs font-mono tracking-wider text-cyan-400 group-hover:text-cyan-600 transition-colors uppercase">
-                {segment.cta}
-              </button>
+          <!-- Organizations Section (now in left column) -->
+          <div>
+            <p class="text-[13px] text-[#b1b0b1] font-mono font-bold uppercase tracking-wider mb-4">
+              {hero.organizations.title}
+            </p>
+            <div class="space-y-0 border border-gray-200 rounded-lg overflow-hidden">
+              <a href="#operators" class="block bg-white p-5 hover:bg-gray-50 transition-all duration-300 group border-b border-gray-200">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-lg font-bold mb-1 text-[#0b1530] group-hover:text-[#0fb4b2] transition-colors">
+                      Veterinary Operators & Networks
+                    </h3>
+                    <p class="text-[#909091] mb-1 text-sm leading-relaxed">
+                      You run clinics. You need people, locations, and visibility.
+                    </p>
+                    <span class="text-xs font-mono tracking-wider text-[#0a1430] uppercase font-semibold">
+                      REVIEW MY OPERATING MARKETS
+                    </span>
+                  </div>
+                  <svg class="w-5 h-5 text-[#0fb4b2] opacity-0 group-hover:opacity-100 transition-opacity ml-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#investors" class="block bg-white p-5 hover:bg-gray-50 transition-all duration-300 group border-b border-gray-200">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-lg font-bold mb-1 text-[#0b1530] group-hover:text-[#0fb4b2] transition-colors">
+                      Private Equity & Owners
+                    </h3>
+                    <p class="text-[#909091] mb-1 text-sm leading-relaxed">
+                      You allocate capital. You need clarity before committing it.
+                    </p>
+                    <span class="text-xs font-mono tracking-wider text-[#0a1430] uppercase font-semibold">
+                      REVIEW MARKET INTELLIGENCE
+                    </span>
+                  </div>
+                  <svg class="w-5 h-5 text-[#0fb4b2] opacity-0 group-hover:opacity-100 transition-opacity ml-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#vendors" class="block bg-white p-5 hover:bg-gray-50 transition-all duration-300 group">
+                <div class="flex items-start justify-between">
+                  <div class="flex-1">
+                    <h3 class="text-lg font-bold mb-1 text-[#0b1530] group-hover:text-[#0fb4b2] transition-colors">
+                      Vendors & Service Providers
+                    </h3>
+                    <p class="text-[#909091] mb-1 text-sm leading-relaxed">
+                      You sell into vet practices. You need access and conversion.
+                    </p>
+                    <span class="text-xs font-mono tracking-wider text-[#0a1430] uppercase font-semibold">
+                      REVIEW TERRITORY REALITY
+                    </span>
+                  </div>
+                  <svg class="w-5 h-5 text-[#0fb4b2] opacity-0 group-hover:opacity-100 transition-opacity ml-4 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                  </svg>
+                </div>
+              </a>
             </div>
-          ))}
+          </div>
+        </div>
+        
+        <!-- Right Column - Visual Only -->
+        <div class="hidden lg:block pt-12">
+          <div class="bg-[#0b1530] rounded-lg h-[590px] flex items-center justify-center relative overflow-hidden">
+            <!-- Add your map visualization or graphic here -->
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="text-cyan-400 text-sm font-mono">
+                <!-- Visual element placeholder -->
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  
+
   <!-- Challenge Section -->
-  <section class="py-20 lg:py-32 bg-navy-800">
+  <section class="py-12 lg:py-16" style="background-color: #0b1530;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-            <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
+          <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+            <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
             {challengeSection.eyebrow}
           </p>
-          <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+          <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-white">
             {challengeSection.headline}
           </h2>
-          <p class="text-gray-400 leading-relaxed mb-6">
+          <p class="leading-relaxed mb-6 text-base" style="color: #a3a3a3;">
             {challengeSection.description}
           </p>
-          <p class="text-white font-semibold leading-relaxed">
+          <p class="text-white font-semibold leading-relaxed text-base">
             {challengeSection.callout}
           </p>
         </div>
         
-        <div class="bg-linear-to-br from-navy-800/50 to-navy-900/50 border border-cyan-500/10 rounded-lg p-10">
-          <p class="text-xs text-cyan-400 font-mono tracking-wider uppercase mb-8">
-            {challengeSection.stats.title}
-          </p>
-          <div class="space-y-8">
-            {challengeSection.stats.items.map((stat) => (
-              <div>
-                <div class="text-5xl font-bold text-cyan-400 mb-3">{stat.value}</div>
-                <p class="text-gray-400 text-sm leading-relaxed">{stat.label}</p>
+        <!-- Separator -->
+        <div class="relative">
+          <div class="absolute left-0 -top-8 -bottom-8 w-0.5" style="background-color: #111a32;"></div>
+          
+          <div class="pl-10">
+            <p class="font-mono tracking-wider uppercase mb-8" style="color: #0eb5b2; font-size: 0.85rem;">
+              {challengeSection.stats.title}
+            </p>
+            <div class="space-y-10">
+              <div class="flex items-start gap-6">
+                <div class="text-4xl font-bold flex-shrink-0" style="color: #0eb5b2; min-width: 120px;">
+                  ~30%
+                </div>
+                <p class="leading-relaxed pt-1" style="color: #a3a3a3; font-size: 0.9375rem; max-width: 280px;">
+                  of "active" veterinarian licenses contain outdated contact info
+                </p>
               </div>
-            ))}
+              
+              <div class="flex items-start gap-6">
+                <div class="text-4xl font-bold flex-shrink-0" style="color: #0eb5b2; min-width: 120px;">
+                  ~40%
+                </div>
+                <p class="leading-relaxed pt-1" style="color: #a3a3a3; font-size: 0.9375rem; max-width: 450px;">
+                  of practice ownership records are misattributed<br>
+                  to holding entities rather than operating<br>
+                  practices
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -89,27 +170,28 @@ import {
   </section>
 
   <!-- Data Architecture -->
-  <section class="py-20 lg:py-32">
+  <section class="py-12 lg:py-16" style="background-color: #ffffff;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
-          <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full"></span>
+      <div class="max-w-3xl mb-16">
+        <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+          <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
           {dataArchitecture.eyebrow}
         </p>
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">
           {dataArchitecture.headline}
         </h2>
-        <p class="text-gray-400 text-lg">
-          {dataArchitecture.description}
+        <p class="text-base" style="color: #525253;">
+          VetPulse builds a single source of truth by triangulating four independent data signals —<br>
+          cross-validated, normalized, and continuously refreshed.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {dataArchitecture.layers.map((layer) => (
-          <div class="bg-navy-800/30 border border-cyan-500/10 p-8 rounded-lg hover:border-cyan-500/30 transition-all duration-300">
-            <p class="text-xs text-cyan-400 font-mono mb-4">LAYER {layer.number}</p>
-            <h3 class="text-xl font-bold mb-4">{layer.title}</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">{layer.description}</p>
+          <div class="layer-card group p-8 rounded-lg transition-all duration-300" style="background-color: #f8f9fa; border: 1px solid #e5e7eb;">
+            <p class="layer-label text-xs font-mono mb-4 transition-colors duration-300" style="color: #a3a3a3;">LAYER {layer.number}</p>
+            <h3 class="text-xl font-bold mb-4" style="color: #0b1530;">{layer.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #737272;">{layer.description}</p>
           </div>
         ))}
       </div>
@@ -117,164 +199,304 @@ import {
   </section>
 
   <!-- Use Cases -->
-  <section class="py-20 lg:py-32 bg-navy-800">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8 space-y-32">
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Operators -->
-      <div class="grid lg:grid-cols-2 gap-16">
-        <div>
-          <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-            <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
-            {operatorsPage.eyebrow}
-          </p>
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">{operatorsPage.headline}</h2>
-          <p class="text-gray-400 mb-8 leading-relaxed">{operatorsPage.description}</p>
-          <button class="bg-navy-800 hover:bg-navy-700 text-white border border-cyan-500/30 px-6 py-3 rounded-sm font-semibold text-sm transition-all">
-            {operatorsPage.cta}
-          </button>
-        </div>
-        <div class="space-y-8">
-          {operatorsPage.benefits.map((benefit) => (
-            <div>
-              <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
+      <div id="operators" class="min-h-screen py-20 lg:py-32">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="lg:sticky lg:top-32 lg:self-start">
+            <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+              <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
+              {operatorsPage.eyebrow}
+            </p>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{operatorsPage.headline}</h2>
+            <p class="text-base mb-8 leading-relaxed" style="color: #676666;">{operatorsPage.description}</p>
+            <button class="cta-button font-mono text-xs tracking-wider uppercase font-semibold px-6 py-3 rounded transition-all" style="background-color: #0b1530; color: white; min-width: 280px;">
+              {operatorsPage.cta}
+            </button>
+          </div>
+          <div class="space-y-16">
+            <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{operatorsPage.unlocksLabel}</p>
+            
+            {operatorsPage.benefits.map((benefit, index) => (
+              <div>
+                <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
+                {index < operatorsPage.benefits.length - 1 && (
+                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                )}
+              </div>
+            ))}
+            
+            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+              <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{operatorsPage.proof.label}</p>
+              <p class="text-sm italic leading-relaxed" style="color: #525253;">"{operatorsPage.proof.quote}"</p>
             </div>
-          ))}
-          <div class="border-l-4 border-cyan-500 pl-6 py-4 bg-navy-800/30">
-            <p class="text-xs text-cyan-400 font-mono tracking-wider uppercase mb-2">{operatorsPage.proof.label}</p>
-            <p class="text-sm text-gray-300 italic leading-relaxed">"{operatorsPage.proof.quote}"</p>
           </div>
         </div>
       </div>
 
       <!-- Investors -->
-      <div class="grid lg:grid-cols-2 gap-16">
-        <div>
-          <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-            <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
-            {investorsPage.eyebrow}
-          </p>
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">{investorsPage.headline}</h2>
-          <p class="text-gray-400 mb-8 leading-relaxed">{investorsPage.description}</p>
-          <button class="bg-navy-800 hover:bg-navy-700 text-white border border-cyan-500/30 px-6 py-3 rounded-sm font-semibold text-sm transition-all">
-            {investorsPage.cta}
-          </button>
-        </div>
-        <div class="space-y-8">
-          {investorsPage.benefits.map((benefit) => (
-            <div>
-              <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
+      <div id="investors" class="min-h-screen py-20 lg:py-32">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="lg:sticky lg:top-32 lg:self-start">
+            <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+              <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
+              {investorsPage.eyebrow}
+            </p>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{investorsPage.headline}</h2>
+            <p class="text-base mb-8 leading-relaxed" style="color: #676666;">{investorsPage.description}</p>
+            <button class="cta-button font-mono text-xs tracking-wider uppercase font-semibold px-6 py-3 rounded transition-all" style="background-color: #0b1530; color: white; min-width: 280px;">
+              {investorsPage.cta}
+            </button>
+          </div>
+          <div class="space-y-16">
+            <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{investorsPage.unlocksLabel}</p>
+            
+            {investorsPage.benefits.map((benefit, index) => (
+              <div>
+                <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
+                {index < investorsPage.benefits.length - 1 && (
+                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                )}
+              </div>
+            ))}
+            
+            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+              <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{investorsPage.proof.label}</p>
+              <p class="text-sm italic leading-relaxed" style="color: #525253;">"{investorsPage.proof.quote}"</p>
             </div>
-          ))}
-          <div class="border-l-4 border-cyan-500 pl-6 py-4 bg-navy-800/30">
-            <p class="text-xs text-cyan-400 font-mono tracking-wider uppercase mb-2">{investorsPage.proof.label}</p>
-            <p class="text-sm text-gray-300 italic leading-relaxed">"{investorsPage.proof.quote}"</p>
           </div>
         </div>
       </div>
 
       <!-- Vendors -->
-      <div class="grid lg:grid-cols-2 gap-16">
-        <div>
-          <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-            <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
-            {vendorsPage.eyebrow}
-          </p>
-          <h2 class="text-3xl lg:text-4xl font-bold mb-6">{vendorsPage.headline}</h2>
-          <p class="text-gray-400 mb-8 leading-relaxed">{vendorsPage.description}</p>
-          <button class="bg-navy-800 hover:bg-navy-700 text-white border border-cyan-500/30 px-6 py-3 rounded-sm font-semibold text-sm transition-all">
-            {vendorsPage.cta}
-          </button>
-        </div>
-        <div class="space-y-8">
-          {vendorsPage.benefits.map((benefit) => (
-            <div>
-              <h3 class="text-xl font-bold mb-3">{benefit.title}</h3>
-              <p class="text-gray-400 text-sm leading-relaxed">{benefit.description}</p>
+      <div id="vendors" class="min-h-screen py-20 lg:py-32">
+        <div class="grid lg:grid-cols-2 gap-16">
+          <div class="lg:sticky lg:top-32 lg:self-start">
+            <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+              <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
+              {vendorsPage.eyebrow}
+            </p>
+            <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{vendorsPage.headline}</h2>
+            <p class="text-base mb-8 leading-relaxed" style="color: #676666;">{vendorsPage.description}</p>
+            <button class="cta-button font-mono text-xs tracking-wider uppercase font-semibold px-6 py-3 rounded transition-all" style="background-color: #0b1530; color: white; min-width: 280px;">
+              {vendorsPage.cta}
+            </button>
+          </div>
+          <div class="space-y-16">
+            <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{vendorsPage.unlocksLabel}</p>
+            
+            {vendorsPage.benefits.map((benefit, index) => (
+              <div>
+                <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
+                <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
+                {index < vendorsPage.benefits.length - 1 && (
+                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                )}
+              </div>
+            ))}
+            
+            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+              <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{vendorsPage.proof.label}</p>
+              <p class="text-sm italic leading-relaxed" style="color: #525253;">"{vendorsPage.proof.quote}"</p>
             </div>
-          ))}
-          <div class="border-l-4 border-cyan-500 pl-6 py-4 bg-navy-800/30">
-            <p class="text-xs text-cyan-400 font-mono tracking-wider uppercase mb-2">{vendorsPage.proof.label}</p>
-            <p class="text-sm text-gray-300 italic leading-relaxed">"{vendorsPage.proof.quote}"</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .layer-card:hover {
+    border-color: #0fb4b2 !important;
+  }
+  
+  .layer-card:hover .layer-label {
+    color: #0fb4b2 !important;
+  }
+  
+  .cta-button:hover {
+    background-color: #0eb5b2 !important;
+  }
+</style>
+
   <!-- Engagement Model -->
-  <section class="py-20 lg:py-32">
+  <section class="py-20 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
-          <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full"></span>
+      <div class="mb-16">
+        <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+          <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
           {engagementModel.eyebrow}
         </p>
-        <h2 class="text-4xl lg:text-5xl font-bold">{engagementModel.headline}</h2>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">
+          {engagementModel.headline}
+        </h2>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
         {engagementModel.cards.map((card, index) => (
-          <div class={index === 3 ? "bg-navy-800 border border-cyan-500/20 p-8 rounded-lg" : "bg-navy-800/30 border border-white/5 p-8 rounded-lg"}>
-            <h3 class="text-lg font-bold mb-4">{card.title}</h3>
-            <p class="text-gray-400 text-sm leading-relaxed">{card.description}</p>
+          <div 
+            class={`fade-in-card p-8 rounded-lg ${index === 3 ? 'investment-card' : 'default-card'}`}
+            style={`animation-delay: ${index * 0.3}s`}
+          >
+            <h3 class="text-lg font-bold mb-4" style={index === 3 ? "color: #2cd4bf;" : "color: #0b1530;"}>{card.title}</h3>
+            <p class="text-sm leading-relaxed" style={index === 3 ? "color: white;" : "color: #676666;"}>{card.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    .layer-card:hover {
+      border-color: #0fb4b2 !important;
+    }
+    
+    .layer-card:hover .layer-label {
+      color: #0fb4b2 !important;
+    }
+    
+    .cta-button:hover {
+      background-color: #0eb5b2 !important;
+    }
+    
+    /* Fade-in animation - slower and smoother */
+    .fade-in-card {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease-out, transform 0.4s ease-out;
+    }
+    
+    .fade-in-card.animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Default card styling */
+    .default-card {
+      background-color: #f8f9fa;
+      border: 1px solid #e5e7eb;
+    }
+    
+    /* Investment card styling */
+    .investment-card {
+      background-color: #0b1530;
+      border: 1px solid rgba(44, 212, 191, 0.2);
+    }
+  </style>
+
+  <script>
+    // Intersection Observer for fade-in animation
+    const observerOptions = {
+      threshold: 0.,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const element = entry.target as HTMLElement;
+        const index = parseInt(element.getAttribute('data-index') || '0');
+        
+        if (entry.isIntersecting) {
+          // Add animation with delay when scrolling into view
+          setTimeout(() => {
+            element.classList.add('animate');
+          }, index * 300);
+        } else {
+          // Remove animation when scrolling out of view
+          element.classList.remove('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in cards
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.fade-in-card');
+      cards.forEach((card, index) => {
+        (card as HTMLElement).setAttribute('data-index', index.toString());
+        observer.observe(card);
+      });
+    });
+  </script>
 
   <!-- Case Studies -->
-  <section class="py-20 lg:py-32 bg-white text-navy-900">
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto text-center mb-16">
-        <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
-          <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full"></span>
-          {caseStudies.eyebrow}
-        </p>
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6">{caseStudies.headline}</h2>
-        <p class="text-gray-600 text-lg">{caseStudies.description}</p>
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {caseStudies.examples.map((example) => (
-          <div class="bg-gray-50 border border-gray-200 p-8 rounded-lg">
-            <h3 class="text-xl font-bold mb-4">{example.title}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{example.stats}</p>
-          </div>
-        ))}
-      </div>
+<section class="py-20 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="mb-16">
+      <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+        <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
+        {caseStudies.eyebrow}
+      </p>
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{caseStudies.headline}</h2>
+      <p class="text-base" style="color: #676666;">{caseStudies.description}</p>
     </div>
-  </section>
+
+    <div class="grid md:grid-cols-2 gap-8">
+      {caseStudies.examples.map((example) => (
+        <div class="p-8 rounded-lg" style="background-color: #f8f9fa; border: 1px solid #e5e7eb;">
+          <h3 class="text-xl font-bold mb-4" style="color: #0b1530;">{example.title}</h3>
+          <p class="text-sm leading-relaxed" style="color: #676666;">{example.stats}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
 
   <!-- About Section -->
-  <section class="py-20 lg:py-32 bg-white text-navy-900">
+  <section class="py-20 lg:py-32 bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-4xl mx-auto text-center">
-        <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center gap-2">
-          <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full"></span>
+        <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center justify-center" style="color: #0eb5b2;">
+          <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
           {aboutSection.eyebrow}
         </p>
-        <h2 class="text-4xl lg:text-5xl font-bold mb-6">
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">
           {aboutSection.headline}
         </h2>
-        <p class="text-xl text-gray-600 mb-8 leading-relaxed">
-          {aboutSection.description}
+        <p class="text-lg mb-8 leading-relaxed" style="color: #676666;">
+          VetPulse operates at the intersection of data engineering, market intelligence, and<br>
+          activation. The team combines automation engineers, AI practitioners, CRM and<br>
+          tooling specialists, and commercial operators focused on validation — not volume.
         </p>
-        <p class="text-base text-gray-500 leading-relaxed">
-          {aboutSection.subheadline}
+        <p class="text-sm leading-relaxed" style="color: #909091;">
+          We build decision-grade datasets, connect them into revenue systems, and support controlled activation<br>
+          when needed — so organizations can act only when market context is clear.
         </p>
         
         <div class="flex items-center justify-center gap-8 mt-12">
           {aboutSection.pillars.map((pillar) => (
             <div class="flex items-center gap-2">
-              <span class="text-cyan-600 text-xl">{pillar.icon}</span>
-              <span class="text-xs font-mono tracking-wider uppercase text-gray-700">{pillar.label}</span>
+              <span class="w-2 h-2 rounded-full" style="background-color: #0eb5b2;"></span>
+              <span class="text-xs font-mono tracking-wider uppercase font-semibold" style="color: #0b1530;">{pillar.label}</span>
             </div>
           ))}
         </div>
       </div>
     </div>
   </section>
-
+  
 </Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  .layer-card:hover {
+    border-color: #0fb4b2 !important;
+  }
+  
+  .layer-card:hover .layer-label {
+    color: #0fb4b2 !important;
+  }
+</style>

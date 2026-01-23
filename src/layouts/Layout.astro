@@ -26,5 +26,40 @@ const { title } = Astro.props;
       <slot />
     </main>
     <Footer />
+    
+    <!-- Scroll to Top Button -->
+    <button 
+      id="scrollToTop" 
+      class="scroll-to-top"
+      aria-label="Scroll to top"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </button>
   </body>
 </html>
+
+<script>
+  // Scroll to Top functionality
+  const scrollToTopButton = document.getElementById('scrollToTop');
+  
+  if (scrollToTopButton) {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        scrollToTopButton.classList.add('visible');
+      } else {
+        scrollToTopButton.classList.remove('visible');
+      }
+    });
+    
+    // Scroll to top when clicked
+    scrollToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+</script>
