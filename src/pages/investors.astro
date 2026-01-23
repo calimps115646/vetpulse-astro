@@ -6,35 +6,35 @@ import { siteConfig, investorsPageFull } from '../config/content';
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
   
   <!-- Hero Section -->
-  <section class="pt-32 pb-20 lg:pt-40 lg:pb-32">
+  <section class="pt-32 pb-20 lg:pt-40 lg:pb-24 hero-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div>
-          <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-            <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
+        <div class="hero-content">
+          <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+            <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
             {investorsPageFull.hero.eyebrow}
           </p>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+          <h1 class="text-4xl lg:text-5xl font-bold mb-6 text-[#0b1430]">
             {investorsPageFull.hero.headline}
           </h1>
-          <p class="text-xl text-gray-400 mb-8 leading-relaxed">
+          <p class="text-xl text-[#636562] mb-8 leading-relaxed">
             {investorsPageFull.hero.description}
           </p>
-          <a href="/contact" class="bg-cyan-500 hover:bg-cyan-600 text-navy-900 px-6 py-3 rounded-sm font-semibold text-sm tracking-wide transition-all duration-200 inline-block">
+          <a href="/contact" class="bg-[#0eb4b3] hover:bg-[#0ca5a4] text-white px-6 py-3 rounded-sm font-semibold text-sm tracking-wide transition-all duration-200 inline-block">
             {investorsPageFull.hero.cta}
           </a>
         </div>
         
         <!-- Visualization -->
-        <div class="bg-navy-900 border border-cyan-500/20 rounded-lg p-12 flex flex-col items-center justify-center min-h-100">
+        <div class="bg-[#0b1530] border border-cyan-500/20 rounded-lg p-16 flex flex-col items-center justify-center min-h-[400px] relative hero-visual">
           <div class="text-center">
-            <p class="text-cyan-400 text-xs font-mono tracking-wider uppercase mb-8">
+            <p class="text-[#0eb4b3] text-xs font-mono tracking-wider uppercase mb-2 animate-pulse">
               {investorsPageFull.hero.visualization.label}
             </p>
-            <div class="text-6xl lg:text-7xl font-bold mb-4">
+            <div class="text-2xl lg:text-3xl font-bold mb-2 text-white">
               {investorsPageFull.hero.visualization.value}
             </div>
-            <p class="text-gray-400 text-sm">
+            <p class="text-[#a2a2a3] text-xs font-mono tracking-wider">
               {investorsPageFull.hero.visualization.subtitle}
             </p>
           </div>
@@ -43,77 +43,87 @@ import { siteConfig, investorsPageFull } from '../config/content';
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- PE Reality -->
-  <section class="py-20 lg:py-32 bg-gray-50 text-navy-900">
+  <section class="py-20 lg:py-24 bg-gray-50 text-navy-900 fade-in-section">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-        <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full inline-block mr-2"></span>
+      <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+        <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
         {investorsPageFull.peReality.eyebrow}
       </p>
-      <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-[#0b1530] leading-tight">
         {investorsPageFull.peReality.headline}
       </h2>
-      <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+      <p class="text-lg text-[#636562] mb-8 leading-relaxed">
         {investorsPageFull.peReality.description}
       </p>
       
-      <ul class="space-y-4 mb-12">
+      <ul class="space-y-4 mb-8">
         {investorsPageFull.peReality.challenges.map((challenge) => (
-          <li class="flex items-start gap-3">
-            <span class="text-cyan-600 text-xl mt-1">●</span>
-            <span class="text-gray-700 leading-relaxed">{challenge}</span>
+          <li class="flex items-center gap-3">
+            <span class="text-[#0eb4b3] text-xs leading-none">●</span>
+            <span class="text-[#636562] leading-relaxed">{challenge}</span>
           </li>
         ))}
       </ul>
 
       <div class="space-y-2 mb-8">
-        <p class="text-xl font-bold">{investorsPageFull.peReality.callout1}</p>
+        <p class="text-xl font-bold text-[#0b1530]">{investorsPageFull.peReality.callout1}</p>
       </div>
 
-      <p class="text-gray-600 leading-relaxed">
+
+      <p class="text-[#636562] leading-relaxed">
         {investorsPageFull.peReality.callout2}
       </p>
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- What VetPulse Unlocks -->
-  <section class="py-20 lg:py-32">
+  <section class="py-20 lg:py-24 fade-in-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="text-center mb-16">
-        <p class="text-cyan-400 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-          <span class="w-1.5 h-1.5 bg-cyan-500 rounded-full inline-block mr-2"></span>
+      <div class="mb-16">
+        <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+          <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
           {investorsPageFull.unlocks.eyebrow}
         </p>
-        <h2 class="text-3xl lg:text-4xl font-bold">
+        <h2 class="text-3xl lg:text-4xl font-bold text-[#0b1530] leading-tight">
           {investorsPageFull.unlocks.headline}
         </h2>
       </div>
 
       <div class="grid md:grid-cols-3 gap-8">
         {investorsPageFull.unlocks.cards.map((card) => (
-          <div class="bg-gray-50 border border-gray-200 p-8 rounded-lg hover:border-cyan-500/30 transition-all duration-300">
+          <div class="bg-gray-50 border border-gray-200 p-8 rounded-lg">
             <h3 class="text-xl font-bold mb-4 text-navy-900">{card.title}</h3>
-            <p class="text-gray-600 text-sm leading-relaxed">{card.description}</p>
+            <p class="text-[#636562] text-sm leading-relaxed">{card.description}</p>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- Built for Diligence -->
-  <section class="py-20 lg:py-32 bg-white text-navy-900">
+  <section class="py-20 lg:py-24 bg-white text-navy-900 fade-in-section">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-        <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full inline-block mr-2"></span>
+      <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+        <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
         {investorsPageFull.diligence.eyebrow}
       </p>
-      <h2 class="text-3xl lg:text-4xl font-bold mb-8">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-8 text-[#0b1530] leading-tight">
         {investorsPageFull.diligence.headline}
       </h2>
       
       <div class="space-y-6">
         {investorsPageFull.diligence.content.map((item) => (
-          <p class="text-lg text-gray-600 leading-relaxed">
+          <p class="text-lg text-[#636562] leading-relaxed">
             {item.paragraph}
           </p>
         ))}
@@ -121,35 +131,110 @@ import { siteConfig, investorsPageFull } from '../config/content';
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- Proof Section -->
-  <section class="py-20 lg:py-32 bg-gray-50 text-navy-900">
+  <section class="py-20 lg:py-24 bg-gray-50 text-navy-900 fade-in-section">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
-      <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-        <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full inline-block mr-2"></span>
+      <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+        <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
         {investorsPageFull.proof.eyebrow}
       </p>
-      <h2 class="text-2xl lg:text-3xl font-bold mb-6">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-[#0b1530] leading-tight">
         {investorsPageFull.proof.headline}
       </h2>
-      <p class="text-lg text-gray-600 leading-relaxed">
+      <p class="text-lg text-[#636562] leading-relaxed">
         {investorsPageFull.proof.description}
       </p>
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- CTA Section -->
-  <section class="py-20 lg:py-32 bg-navy-900">
+  <section class="py-20 lg:py-24 bg-[#0b1530] fade-in-section">
     <div class="max-w-4xl mx-auto px-6 lg:px-8 text-center">
-      <h2 class="text-3xl lg:text-4xl font-bold mb-6">
+      <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-white leading-tight">
         {investorsPageFull.cta.headline}
       </h2>
-      <p class="text-xl text-gray-400 mb-8">
+      <p class="text-lg text-[#d4d4d5] mb-8 leading-relaxed">
         {investorsPageFull.cta.description}
       </p>
-      <a href="/contact" class="bg-cyan-500 hover:bg-cyan-600 text-navy-900 px-8 py-4 rounded-sm font-semibold text-base tracking-wide transition-all duration-200 inline-block">
+      <a href="/contact" class="bg-[#0eb4b3] hover:bg-[#0ca5a4] text-white px-8 py-4 rounded-sm font-semibold text-base tracking-wide transition-all duration-200 inline-block">
         {investorsPageFull.cta.buttonText}
       </a>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hero section initial load animation */
+  .hero-section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .hero-content {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+  
+  .hero-visual {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+  
+  /* Scroll-triggered fade-in for other sections */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll-triggered animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in sections
+    const fadeInSections = document.querySelectorAll('.fade-in-section');
+    fadeInSections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>

@@ -17,11 +17,11 @@ import {
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
   
   <!-- Hero Section (updated) -->
-  <section class="pt-32 pb-20 lg:pt-32 lg:pb-32 bg-white">
+  <section class="pt-32 pb-20 lg:pt-32 lg:pb-32 bg-white hero-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-start">
         <!-- Left Column -->
-        <div>
+        <div class="hero-content">
           <!-- Hero Content -->
           <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6">
             {hero.eyebrow}
@@ -34,7 +34,7 @@ import {
           </p>
 
           <!-- Organizations Section (now in left column) -->
-          <div>
+          <div class="hero-cards">
             <p class="text-[13px] text-[#b1b0b1] font-mono font-bold uppercase tracking-wider mb-4">
               {hero.organizations.title}
             </p>
@@ -100,7 +100,7 @@ import {
         </div>
         
         <!-- Right Column - Visual Only -->
-        <div class="hidden lg:block pt-12">
+        <div class="hidden lg:block pt-12 hero-visual">
           <div class="bg-[#0b1530] rounded-lg h-[590px] flex items-center justify-center relative overflow-hidden">
             <!-- Add your map visualization or graphic here -->
             <div class="absolute inset-0 flex items-center justify-center">
@@ -113,6 +113,9 @@ import {
       </div>
     </div>
   </section>
+
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
 
   <!-- Challenge Section -->
   <section class="py-12 lg:py-16" style="background-color: #0b1530;">
@@ -169,6 +172,9 @@ import {
     </div>
   </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
   <!-- Data Architecture -->
   <section class="py-12 lg:py-16" style="background-color: #ffffff;">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
@@ -197,6 +203,9 @@ import {
       </div>
     </div>
   </section>
+
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
 
   <!-- Use Cases -->
   <section class="bg-white">
@@ -235,7 +244,14 @@ import {
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Investors -->
       <div id="investors" class="min-h-screen py-20 lg:py-32">
         <div class="grid lg:grid-cols-2 gap-16">
@@ -270,7 +286,14 @@ import {
           </div>
         </div>
       </div>
+    </div>
+  </section>
 
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
+
+  <section class="bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Vendors -->
       <div id="vendors" class="min-h-screen py-20 lg:py-32">
         <div class="grid lg:grid-cols-2 gap-16">
@@ -308,23 +331,8 @@ import {
     </div>
   </section>
 
-<style>
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  .layer-card:hover {
-    border-color: #0fb4b2 !important;
-  }
-  
-  .layer-card:hover .layer-label {
-    color: #0fb4b2 !important;
-  }
-  
-  .cta-button:hover {
-    background-color: #0eb5b2 !important;
-  }
-</style>
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
 
   <!-- Engagement Model -->
   <section class="py-20 lg:py-32 bg-white">
@@ -353,104 +361,34 @@ import {
     </div>
   </section>
 
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    
-    .layer-card:hover {
-      border-color: #0fb4b2 !important;
-    }
-    
-    .layer-card:hover .layer-label {
-      color: #0fb4b2 !important;
-    }
-    
-    .cta-button:hover {
-      background-color: #0eb5b2 !important;
-    }
-    
-    /* Fade-in animation - slower and smoother */
-    .fade-in-card {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease-out, transform 0.4s ease-out;
-    }
-    
-    .fade-in-card.animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Default card styling */
-    .default-card {
-      background-color: #f8f9fa;
-      border: 1px solid #e5e7eb;
-    }
-    
-    /* Investment card styling */
-    .investment-card {
-      background-color: #0b1530;
-      border: 1px solid rgba(44, 212, 191, 0.2);
-    }
-  </style>
-
-  <script>
-    // Intersection Observer for fade-in animation
-    const observerOptions = {
-      threshold: 0.,
-      rootMargin: '0px 0px -50px 0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const element = entry.target as HTMLElement;
-        const index = parseInt(element.getAttribute('data-index') || '0');
-        
-        if (entry.isIntersecting) {
-          // Add animation with delay when scrolling into view
-          setTimeout(() => {
-            element.classList.add('animate');
-          }, index * 300);
-        } else {
-          // Remove animation when scrolling out of view
-          element.classList.remove('animate');
-        }
-      });
-    }, observerOptions);
-
-    // Observe all fade-in cards
-    document.addEventListener('DOMContentLoaded', () => {
-      const cards = document.querySelectorAll('.fade-in-card');
-      cards.forEach((card, index) => {
-        (card as HTMLElement).setAttribute('data-index', index.toString());
-        observer.observe(card);
-      });
-    });
-  </script>
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
 
   <!-- Case Studies -->
-<section class="py-20 lg:py-32 bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-8">
-    <div class="mb-16">
-      <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
-        <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
-        {caseStudies.eyebrow}
-      </p>
-      <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{caseStudies.headline}</h2>
-      <p class="text-base" style="color: #676666;">{caseStudies.description}</p>
-    </div>
+  <section class="py-20 lg:py-32 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="mb-16">
+        <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
+          <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
+          {caseStudies.eyebrow}
+        </p>
+        <h2 class="text-3xl lg:text-4xl font-bold mb-6" style="color: #0b1530;">{caseStudies.headline}</h2>
+        <p class="text-base" style="color: #676666;">{caseStudies.description}</p>
+      </div>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      {caseStudies.examples.map((example) => (
-        <div class="p-8 rounded-lg" style="background-color: #f8f9fa; border: 1px solid #e5e7eb;">
-          <h3 class="text-xl font-bold mb-4" style="color: #0b1530;">{example.title}</h3>
-          <p class="text-sm leading-relaxed" style="color: #676666;">{example.stats}</p>
-        </div>
-      ))}
+      <div class="grid md:grid-cols-2 gap-8">
+        {caseStudies.examples.map((example) => (
+          <div class="p-8 rounded-lg" style="background-color: #f8f9fa; border: 1px solid #e5e7eb;">
+            <h3 class="text-xl font-bold mb-4" style="color: #0b1530;">{example.title}</h3>
+            <p class="text-sm leading-relaxed" style="color: #676666;">{example.stats}</p>
+          </div>
+        ))}
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Horizontal Separator -->
+  <hr class="border-0 h-px bg-gray-200" />
 
   <!-- About Section -->
   <section class="py-20 lg:py-32 bg-white">
@@ -487,9 +425,42 @@ import {
   
 </Layout>
 
+
 <style>
   html {
     scroll-behavior: smooth;
+  }
+  
+  /* Hero section initial load animation */
+  .hero-section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .hero-content {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+  
+  .hero-cards {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+  
+  .hero-visual {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.6s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   .layer-card:hover {
@@ -499,4 +470,66 @@ import {
   .layer-card:hover .layer-label {
     color: #0fb4b2 !important;
   }
+  
+  .cta-button:hover {
+    background-color: #0eb5b2 !important;
+  }
+  
+  /* Fade-in animation - slower and smoother */
+  .fade-in-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.4s ease-out;
+  }
+  
+  .fade-in-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Default card styling */
+  .default-card {
+    background-color: #f8f9fa;
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* Investment card styling */
+  .investment-card {
+    background-color: #0b1530;
+    border: 1px solid rgba(44, 212, 191, 0.2);
+  }
 </style>
+
+<script>
+  // Intersection Observer for fade-in animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const element = entry.target as HTMLElement;
+      const index = parseInt(element.getAttribute('data-index') || '0');
+      
+      if (entry.isIntersecting) {
+        // Add animation with delay when scrolling into view
+        setTimeout(() => {
+          element.classList.add('animate');
+        }, index * 300);
+      } else {
+        // Remove animation when scrolling out of view
+        element.classList.remove('animate');
+      }
+    });
+  }, observerOptions);
+
+  // Observe all fade-in cards
+  document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.fade-in-card');
+    cards.forEach((card, index) => {
+      (card as HTMLElement).setAttribute('data-index', index.toString());
+      observer.observe(card);
+    });
+  });
+</script>
