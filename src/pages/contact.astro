@@ -2,18 +2,17 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-
 <Layout title="VetPulse | Request Market Intelligence">
-  <div class="min-h-screen bg-gray-50 pt-32 pb-16 px-4">
+  <div class="bg-gray-50 pt-32 pb-16 px-4">
     <div class="max-w-3xl mx-auto">
       <!-- Eyebrow LEFT-ALIGNED -->
-      <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+      <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center hero-eyebrow">
         <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
         COMMISSION A BRIEFING
       </p>
       
       <!-- Heading and description CENTERED -->
-      <div class="text-center mb-6">
+      <div class="text-center mb-6 hero-content">
         <h1 class="text-3xl font-bold text-[#0b1430] mb-2">
           Request Market Intelligence
         </h1>
@@ -24,7 +23,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       
       <!-- Form container with border -->
-      <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8 md:p-12">
+      <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8 md:p-12 form-container">
         <form id="contactForm" class="space-y-6">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
@@ -41,7 +40,6 @@ import Layout from '../layouts/Layout.astro';
             <span class="error-message text-red-500 text-sm hidden">Please enter your name</span>
           </div>
 
-
           <div>
             <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
               Email *
@@ -56,7 +54,6 @@ import Layout from '../layouts/Layout.astro';
             <span class="error-message text-red-500 text-sm hidden">Please enter a valid email</span>
           </div>
 
-
           <div>
             <label for="company" class="block text-sm font-medium text-gray-700 mb-2">
               Company
@@ -68,7 +65,6 @@ import Layout from '../layouts/Layout.astro';
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             />
           </div>
-
 
           <div>
             <label for="message" class="block text-sm font-medium text-gray-700 mb-2">
@@ -85,7 +81,6 @@ import Layout from '../layouts/Layout.astro';
             <span class="error-message text-red-500 text-sm hidden">Please describe your research needs</span>
           </div>
 
-
           <button
             type="submit"
             id="submitBtn"
@@ -95,11 +90,9 @@ import Layout from '../layouts/Layout.astro';
           </button>
         </form>
 
-
         <div id="successMessage" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
           Thank you! Your request has been received (STUB).
         </div>
-
 
         <p class="text-gray-600 text-sm mt-6 text-center">
           Or contact us directly: <a href="mailto:contact@vetpulse.com" class="text-[#0eb4b3] hover:underline">contact@vetpulse.com</a>
@@ -109,12 +102,57 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </Layout>
 
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hero eyebrow animation */
+  .hero-eyebrow {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Hero content animation */
+  .hero-content {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+  
+  /* Form container animation */
+  .form-container {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.4s forwards;
+  }
+  
+  /* Scroll-triggered fade-in for other sections */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
 
 <script>
   const form = document.getElementById('contactForm') as HTMLFormElement;
   const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
   const successMessage = document.getElementById('successMessage');
-
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -147,7 +185,6 @@ import Layout from '../layouts/Layout.astro';
     }, 1000);
   });
 
-
   // Client-side validation
   const inputs = form.querySelectorAll('input[required], textarea[required]');
   inputs.forEach(input => {
@@ -162,6 +199,28 @@ import Layout from '../layouts/Layout.astro';
         target.classList.remove('border-red-500');
         errorMsg?.classList.add('hidden');
       }
+    });
+  });
+
+  // Intersection Observer for scroll-triggered animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in sections
+    const fadeInSections = document.querySelectorAll('.fade-in-section');
+    fadeInSections.forEach((section) => {
+      observer.observe(section);
     });
   });
 </script>

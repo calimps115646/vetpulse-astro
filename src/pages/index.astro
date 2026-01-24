@@ -211,8 +211,8 @@ import {
   <section class="bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Operators -->
-      <div id="operators" class="min-h-screen py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-16">
+      <div id="operators" class="py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div class="lg:sticky lg:top-32 lg:self-start">
             <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
               <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
@@ -224,7 +224,7 @@ import {
               {operatorsPage.cta}
             </button>
           </div>
-          <div class="space-y-16">
+          <div class="space-y-12 lg:space-y-16">
             <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{operatorsPage.unlocksLabel}</p>
             
             {operatorsPage.benefits.map((benefit, index) => (
@@ -232,12 +232,12 @@ import {
                 <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
                 <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
                 {index < operatorsPage.benefits.length - 1 && (
-                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                  <div class="mt-12 lg:mt-16 border-t" style="border-color: #e5e7eb;"></div>
                 )}
               </div>
             ))}
             
-            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+            <div class="border-l-4 pl-6 py-4 mt-12 lg:mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
               <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{operatorsPage.proof.label}</p>
               <p class="text-sm italic leading-relaxed" style="color: #525253;">"{operatorsPage.proof.quote}"</p>
             </div>
@@ -253,8 +253,8 @@ import {
   <section class="bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Investors -->
-      <div id="investors" class="min-h-screen py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-16">
+      <div id="investors" class="py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div class="lg:sticky lg:top-32 lg:self-start">
             <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
               <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
@@ -266,7 +266,7 @@ import {
               {investorsPage.cta}
             </button>
           </div>
-          <div class="space-y-16">
+          <div class="space-y-12 lg:space-y-16">
             <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{investorsPage.unlocksLabel}</p>
             
             {investorsPage.benefits.map((benefit, index) => (
@@ -274,12 +274,12 @@ import {
                 <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
                 <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
                 {index < investorsPage.benefits.length - 1 && (
-                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                  <div class="mt-12 lg:mt-16 border-t" style="border-color: #e5e7eb;"></div>
                 )}
               </div>
             ))}
             
-            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+            <div class="border-l-4 pl-6 py-4 mt-12 lg:mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
               <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{investorsPage.proof.label}</p>
               <p class="text-sm italic leading-relaxed" style="color: #525253;">"{investorsPage.proof.quote}"</p>
             </div>
@@ -295,8 +295,8 @@ import {
   <section class="bg-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <!-- Vendors -->
-      <div id="vendors" class="min-h-screen py-20 lg:py-32">
-        <div class="grid lg:grid-cols-2 gap-16">
+      <div id="vendors" class="py-16 lg:py-24">
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
           <div class="lg:sticky lg:top-32 lg:self-start">
             <p class="text-xs font-mono tracking-[0.15em] uppercase mb-4 flex items-center" style="color: #0eb5b2;">
               <span class="w-2 h-2 inline-block mr-2" style="background-color: #0eb5b2;"></span>
@@ -308,7 +308,7 @@ import {
               {vendorsPage.cta}
             </button>
           </div>
-          <div class="space-y-16">
+          <div class="space-y-12 lg:space-y-16">
             <p class="text-xs font-mono tracking-wider uppercase" style="color: #b1b0b1;">{vendorsPage.unlocksLabel}</p>
             
             {vendorsPage.benefits.map((benefit, index) => (
@@ -316,12 +316,12 @@ import {
                 <h3 class="text-xl font-bold mb-3" style="color: #0b1530;">{benefit.title}</h3>
                 <p class="text-sm leading-relaxed" style="color: #676666;">{benefit.description}</p>
                 {index < vendorsPage.benefits.length - 1 && (
-                  <div class="mt-16 border-t" style="border-color: #e5e7eb;"></div>
+                  <div class="mt-12 lg:mt-16 border-t" style="border-color: #e5e7eb;"></div>
                 )}
               </div>
             ))}
             
-            <div class="border-l-4 pl-6 py-4 mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
+            <div class="border-l-4 pl-6 py-4 mt-12 lg:mt-16" style="border-color: #0eb5b2; background-color: #f8f9fa;">
               <p class="text-xs font-mono tracking-wider uppercase mb-2" style="color: #0eb5b2;">{vendorsPage.proof.label}</p>
               <p class="text-sm italic leading-relaxed" style="color: #525253;">"{vendorsPage.proof.quote}"</p>
             </div>
@@ -425,7 +425,6 @@ import {
   
 </Layout>
 
-
 <style>
   html {
     scroll-behavior: smooth;
@@ -497,6 +496,30 @@ import {
   .investment-card {
     background-color: #0b1530;
     border: 1px solid rgba(44, 212, 191, 0.2);
+  }
+  
+  /* Responsive spacing fixes for use case sections */
+  @media (max-width: 1280px) {
+    #operators, #investors, #vendors {
+      padding-top: 3rem;
+      padding-bottom: 3rem;
+    }
+  }
+  
+  /* Better sticky behavior on smaller viewports */
+  @media (max-width: 1024px) {
+    .lg\:sticky {
+      position: static !important;
+    }
+  }
+  
+  /* Responsive spacing for benefit sections */
+  @media (max-width: 768px) {
+    #operators .space-y-12,
+    #investors .space-y-12,
+    #vendors .space-y-12 {
+      gap: 2rem;
+    }
   }
 </style>
 
