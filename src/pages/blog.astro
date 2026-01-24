@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
-import { siteConfig } from '../config/content';
+import { siteConfig, blogPage } from '../config/content';
 
 // Get all published blog posts, sorted by date
 const allPosts = await getCollection('blog', ({ data }) => {
@@ -14,68 +14,146 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
   
   <!-- Hero Section -->
-  <section class="pt-32 pb-20 lg:pt-40 lg:pb-32 bg-white">
+  <section class="pt-24 pb-6 lg:pt-32 lg:pb-8 bg-white hero-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <p class="text-cyan-600 text-xs font-mono tracking-[0.15em] uppercase mb-4">
-          <span class="w-1.5 h-1.5 bg-cyan-600 rounded-full inline-block mr-2"></span>
-          INTELLIGENCE BRIEFS
+      <div class="max-w-3xl hero-content">
+        <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
+          <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
+          {blogPage.eyebrow}
         </p>
-        <h1 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
-          Market Research & Insights
+        <h1 class="text-3xl lg:text-4xl font-bold mb-4 text-[#0b1430]">
+          {blogPage.headline}
         </h1>
-        <p class="text-xl text-gray-600 leading-relaxed">
-          Data-driven insights on veterinary workforce trends, market consolidation, and commercial intelligence.
+        <p class="text-l text-[#636562] leading-relaxed">
+          {blogPage.description}
         </p>
       </div>
     </div>
   </section>
 
+  <!-- Separator -->
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 pb-12 lg:pb-16">
+    <div class="border-t border-gray-200"></div>
+  </div>
+
   <!-- Articles Grid -->
-  <section class="pb-20 lg:pb-32 bg-white">
+  <section class="pb-20 lg:pb-32 bg-white fade-in-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="grid md:grid-cols-3 gap-8">
-        {sortedPosts.map((post) => (
-          <article class="group cursor-pointer">
-            <!-- Article Cover Placeholder -->
-            <div class="bg-gray-100 border border-gray-200 rounded-lg mb-6 aspect-video flex items-center justify-center">
-              {post.data.cover ? (
-                <img src={post.data.cover} alt={post.data.title} class="w-full h-full object-cover rounded-lg" />
-              ) : (
-                <span class="text-gray-400 text-xs font-mono tracking-wider uppercase">
-                  ARTICLE_COVER
-                </span>
-              )}
-            </div>
-            
-            <!-- Article Meta -->
-            <div class="mb-4">
-              <p class="text-cyan-600 text-xs font-mono tracking-wider uppercase">
-                {post.data.category} • {post.data.readTime}
+        {sortedPosts.map((post, index) => (
+          <a 
+            href={`/blog/${post.id}`} 
+            class="group cursor-pointer block article-card"
+            style={`animation-delay: ${index * 0.1}s`}
+          >
+            <article>
+              <!-- Article Cover Placeholder -->
+              <div class="bg-gray-100 border border-gray-200 rounded-lg mb-4 aspect-video flex items-center justify-center">
+                {post.data.cover ? (
+                  <img src={post.data.cover} alt={post.data.title} class="w-full h-full object-cover rounded-lg" />
+                ) : (
+                  <span class="text-gray-400 text-xs font-mono tracking-wider uppercase">
+                    ARTICLE_COVER
+                  </span>
+                )}
+              </div>
+              
+              <!-- Article Meta -->
+              <div class="mb-3">
+                <p class="text-[#0eb4b3] text-xs font-mono tracking-wider uppercase">
+                  {post.data.category} • {post.data.readTime}
+                </p>
+              </div>
+              
+              <!-- Article Title -->
+              <h2 class="text-xl font-bold text-[#0b1430] mb-3 group-hover:text-[#0eb4b3] transition-colors">
+                {post.data.title}
+              </h2>
+              
+              <!-- Article Description -->
+              <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                {post.data.excerpt}
               </p>
-            </div>
-            
-            <!-- Article Title -->
-            <h2 class="text-xl font-bold text-navy-900 mb-3 group-hover:text-cyan-600 transition-colors">
-              {post.data.title}
-            </h2>
-            
-            <!-- Article Description -->
-            <p class="text-gray-600 text-sm leading-relaxed mb-4">
-              {post.data.excerpt}
-            </p>
-            
-            <!-- Read More Link - FIXED: Use post.id instead of post.slug -->
-            <a 
-              href={`/blog/${post.id}`} 
-              class="text-navy-900 text-sm font-semibold border-b-2 border-navy-900 hover:text-cyan-600 hover:border-cyan-600 transition-colors inline-block"
-            >
-              Read Article
-            </a>
-          </article>
+              
+              <!-- Read More Link -->
+              <span class="text-[#0b1430] text-sm font-semibold border-b-2 border-[#0eb4b3] group-hover:text-[#0eb4b3] transition-colors inline-block">
+                Read Article
+              </span>
+            </article>
+          </a>
         ))}
       </div>
     </div>
   </section>
 
 </Layout>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Hero section initial load animation */
+  .hero-section {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .hero-content {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+  
+  /* Article cards staggered animation */
+  .article-card {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  /* Scroll-triggered fade-in for other sections */
+  .fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+  
+  .fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Intersection Observer for scroll-triggered animations
+  document.addEventListener('DOMContentLoaded', () => {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -100px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, observerOptions);
+
+    // Observe all fade-in sections
+    const fadeInSections = document.querySelectorAll('.fade-in-section');
+    fadeInSections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>

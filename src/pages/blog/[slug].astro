@@ -26,47 +26,73 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
 });
 ---
 
-<Layout title={`${entry.data.title} - ${siteConfig.name}`}>
-  <article class="pt-32 pb-20 lg:pt-40">
-    <div class="max-w-4xl mx-auto px-6 lg:px-8">
+<Layout title={`${siteConfig.name} | ${entry.data.title}`}>
+  <article class="pt-24 pb-20 lg:pt-32 bg-white article-page">
+    
+    <!-- Header Section -->
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 mb-16 article-header">
       
+      <!-- Meta Information -->
       <div class="mb-6">
-        <p class="text-cyan-600 text-xs font-mono tracking-wider uppercase">
+        <p class="text-[#0eb4b3] text-xs font-mono font-bold tracking-[0.15em] uppercase">
           {entry.data.category} • {entry.data.readTime}
         </p>
       </div>
       
-      <h1 class="text-4xl lg:text-5xl font-bold text-navy-900 mb-6 leading-tight">
+      <!-- Title -->
+      <h1 class="text-4xl lg:text-5xl font-bold text-[#0b1430] mb-6 leading-tight">
         {entry.data.title}
       </h1>
       
-      <p class="text-gray-500 text-sm mb-8">
+      <!-- Published Date -->
+      <p class="text-[#636562] text-sm mb-8">
         Published {formattedDate}
       </p>
       
-      <p class="text-xl text-gray-600 leading-relaxed mb-12 pb-12 border-b border-gray-200">
-        {entry.data.excerpt}
-      </p>
+      <!-- Excerpt/Summary -->
+      <div class="bg-gray-50 border-l-4 border-[#0eb4b3] p-6">
+        <p class="text-lg text-[#636562] leading-relaxed">
+          {entry.data.excerpt}
+        </p>
+      </div>
+    </div>
+
+    <!-- Separator -->
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 mb-12 article-separator">
+      <div class="border-t border-gray-200"></div>
+    </div>
+    
+    <!-- Content Section with better formatting -->
+    <div class="max-w-4xl mx-auto px-6 lg:px-8 article-content-wrapper">
       
-      <div class="prose prose-lg prose-navy max-w-none
-        prose-headings:font-bold prose-headings:text-navy-900
-        prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-        prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-        prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-6
-        prose-a:text-cyan-600 prose-a:no-underline hover:prose-a:underline
-        prose-strong:text-navy-900 prose-strong:font-semibold
-        prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
-        prose-li:text-gray-600 prose-li:mb-2
-        prose-code:text-cyan-600 prose-code:bg-gray-100 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
+      <!-- Article Content with cards and spacing -->
+      <div class="blog-content prose prose-lg max-w-none
+        prose-headings:font-bold prose-headings:text-[#0b1430]
+        prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-[#0eb4b3]
+        prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-[#0b1430]
+        prose-h4:text-lg prose-h4:mt-8 prose-h4:mb-3 prose-h4:font-semibold prose-h4:text-[#0b1430]
+        prose-p:text-[#636562] prose-p:leading-[1.8] prose-p:mb-6 prose-p:text-base
+        prose-a:text-[#0eb4b3] prose-a:font-medium prose-a:no-underline hover:prose-a:underline hover:prose-a:text-[#0b1430]
+        prose-strong:text-[#0b1430] prose-strong:font-bold
+        prose-ul:my-8 prose-ul:space-y-3 prose-ul:list-none prose-ul:pl-0
+        prose-ol:my-8 prose-ol:space-y-3 prose-ol:pl-0
+        prose-li:text-[#636562] prose-li:leading-relaxed prose-li:relative
+        prose-blockquote:border-l-4 prose-blockquote:border-[#0eb4b3] prose-blockquote:bg-gray-50 prose-blockquote:pl-6 prose-blockquote:py-4 prose-blockquote:my-8 prose-blockquote:italic prose-blockquote:text-[#636562]
+        prose-code:text-[#0eb4b3] prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:font-semibold
+        prose-pre:bg-[#0b1430] prose-pre:text-white prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-8
+        prose-hr:border-gray-200 prose-hr:my-12
+        prose-img:rounded-lg prose-img:shadow-md prose-img:my-8
       ">
         <Content />
       </div>
       
+      <!-- Tags Section -->
       {entry.data.tags && entry.data.tags.length > 0 && (
-        <div class="mt-12 pt-8 border-t border-gray-200">
-          <div class="flex flex-wrap gap-2">
+        <div class="mt-16 pt-8 border-t border-gray-200 article-tags">
+          <p class="text-sm font-semibold text-[#0b1430] mb-4 uppercase tracking-wider">Topics</p>
+          <div class="flex flex-wrap gap-3">
             {entry.data.tags.map((tag: string) => (
-              <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider">
+              <span class="bg-white border-2 border-gray-200 text-[#636562] px-4 py-2 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider hover:border-[#0eb4b3] hover:text-[#0eb4b3] transition-all cursor-pointer">
                 {tag}
               </span>
             ))}
@@ -74,12 +100,13 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
         </div>
       )}
       
-      <div class="mt-12">
+      <!-- Back Link -->
+      <div class="mt-12 pt-8 border-t border-gray-200 article-back-link">
         <a 
           href="/blog" 
-          class="text-cyan-600 hover:text-cyan-700 font-semibold text-sm inline-flex items-center gap-2 transition-colors"
+          class="text-[#0eb4b3] hover:text-[#0b1430] font-semibold text-sm inline-flex items-center gap-2 transition-colors group"
         >
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
           </svg>
           Back to all articles
@@ -89,3 +116,101 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
     </div>
   </article>
 </Layout>
+
+<style is:global>
+  /* Custom bullet styling for unordered lists */
+  .blog-content ul li {
+    padding-left: 1.75rem;
+  }
+  
+  /* Add cyan bullets to regular list items */
+  .blog-content ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: #0eb4b3;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  /* Remove bullets from list items that start with bold text */
+  .blog-content ul li:has(strong:first-child)::before {
+    content: '';
+  }
+  
+  .blog-content ul li:has(strong:first-child) {
+    padding-left: 0;
+  }
+  
+  /* Default ordered list items with numbers */
+  .blog-content ol li {
+    padding-left: 1.75rem;
+    margin-left: 1.5rem;
+  }
+  
+  /* Style for ordered list numbers - cyan color */
+  .blog-content ol li::marker {
+    color: #0eb4b3;
+    font-weight: bold;
+  }
+  
+  /* Remove numbers and align left for ordered list items with bold text */
+  .blog-content ol li:has(strong:first-child) {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;
+  }
+</style>
+
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Article page initial load animation */
+  .article-page {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  /* Article header animation */
+  .article-header {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+  }
+  
+  /* Separator animation */
+  .article-separator {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+  }
+  
+  /* Article content animation */
+  .article-content-wrapper {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.5s forwards;
+  }
+  
+  /* Tags section animation */
+  .article-tags {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.7s forwards;
+  }
+  
+  /* Back link animation */
+  .article-back-link {
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out 0.8s forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

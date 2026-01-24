@@ -514,7 +514,7 @@ export const dataEthicsPage = {
     headline: "Data Ethics at VetPulse",
     description: "Market intelligence requires defensible data.",
     intro: [
-      "VetPulse exists because the US veterinary market lacks a unified, accurate view of workforce ownership, and competitive dynamics. State licensing boards operate independently. Ownership structures are opaque. Digital footprints are fragmented.",
+      "VetPulse exists because the US veterinary market lacks a unified, accurate view of workforce, ownership, and competitive dynamics. State licensing boards operate independently. Ownership structures are opaque. Digital footprints are fragmented.",
       "Our responsibility is not just to aggregate data — it is to restore market context in a way organizations can rely on for hiring, investment, and revenue decisions.",
       "This page explains how VetPulse builds datasets, what we explicitly exclude, and why these standards matter for organizations using VetPulse as decision infrastructure."
     ]
@@ -538,39 +538,6 @@ export const dataEthicsPage = {
       }
     ],
     footer: "We would rather deliver less data with higher confidence than inflate coverage with unverifiable inputs."
-  },
-
-  useCaseGovernance: {
-    title: "Use-Case Governance (Design for Purpose)",
-    intro: "VetPulse does not operate as a self-serve platform.",
-    description: "Market intelligence infrastructure requires design for purpose — not unlimited access to raw data.",
-    governance: "Each engagement is scoped intentionally based on:",
-    criteria: [
-      "Decision context (hiring, diligence, expansion, revenue)",
-      "Acceptable use boundaries",
-      "Activation controls, if outreach is involved",
-      "Internal handling and access expectations"
-    ],
-    footer: "This governance ensures data is used as decision infrastructure, not as an indiscriminate execution engine.",
-    exclusions: {
-      title: "These exclusions are intentional. They reduce risk for our clients and ensure VetPulse datasets remain suitable for enterprise, diligence, and operational use.",
-      items: [
-        "Infer sensitive personal attributes",
-        "Automate outreach without explicit client governance"
-      ]
-    }
-  },
-
-  validation: {
-    title: "Validation Over Volume",
-    intro: "Every dataset VetPulse delivers includes:",
-    components: [
-      "Source attribution",
-      "Confidence indicators",
-      "Known limitations and exclusions"
-    ],
-    description: "We actively remove records that cannot be validated to our standards, even when doing so reduces apparent coverage.",
-    callout: "Accuracy compounds. Bad data creates liability."
   },
 
   dataSourcing: {
@@ -600,8 +567,38 @@ export const dataEthicsPage = {
       "Scrape private social networks or gated communities",
       "Collect or sell consumer pet owner data",
       "Sell raw contact lists or \"leads\"",
-      "Create surveillance tools"
-    ]
+      "Create surveillance tools",
+      "Infer sensitive personal attributes",
+      "Automate outreach without explicit client governance"
+    ],
+    footer: "These exclusions are intentional. They reduce risk for our clients and ensure VetPulse datasets remain suitable for enterprise, diligence, and operational use."
+  },
+
+  useCaseGovernance: {
+    title: "Use-Case Governance",
+    subtitle: "Design for Purpose",
+    intro: "VetPulse does not operate as a self-serve platform.",
+    description: "Market intelligence infrastructure requires design for purpose — not unlimited access to raw data.",
+    governance: "Each engagement is scoped intentionally based on:",
+    criteria: [
+      "Decision context (hiring, diligence, expansion, revenue)",
+      "Acceptable use boundaries",
+      "Activation controls, if outreach is involved",
+      "Internal handling and access expectations"
+    ],
+    footer: "This governance ensures data is used as decision infrastructure, not as an indiscriminate execution engine."
+  },
+
+  validation: {
+    title: "Validation Over Volume",
+    intro: "Every dataset VetPulse delivers includes:",
+    components: [
+      "Source attribution",
+      "Confidence indicators",
+      "Known limitations and exclusions"
+    ],
+    description: "We actively remove records that cannot be validated to our standards, even when doing so reduces apparent coverage.",
+    callout: "Accuracy compounds. Bad data creates liability."
   },
 
   contact: {
