@@ -22,3 +22,14 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Strapi Backend
+strapi-backend/node_modules
+strapi-backend/.tmp
+strapi-backend/.cache
+strapi-backend/dist
+strapi-backend/build
+strapi-backend/.env
+
+# Docker PostgreSQL data
+postgres-data/

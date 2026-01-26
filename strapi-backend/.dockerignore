@@ -1,0 +1,7 @@
+node_modules
+.tmp
+.cache
+dist
+build
+.git
+.env
