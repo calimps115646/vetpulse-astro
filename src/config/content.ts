@@ -477,36 +477,36 @@ export const vendorsPageFull = {
 
 //blog.astro page
 export const blogPage = {
-    eyebrow: "INTELLIGENCE BRIEFS",
-    headline: "Market Research & Insights",
-    description: "Data-driven insights on veterinary workforce trends, market consolidation, and commercial intelligence.",
-    articles: [
-      {
-        category: "WORKFORCE INTELLIGENCE",
-        readTime: "6 MIN READ",
-        title: "Why Veterinary Workforce Data Accuracy Matters for Multi-Site Operators",
-        description: "State licensing boards provide incomplete pictures. Here's why accuracy in workforce data directly impacts hiring velocity and territory planning.",
-        slug: "veterinary-workforce-data-accuracy",
-        coverPlaceholder: "ARTICLE_COVER"
-      },
-      {
-        category: "M&A INTELLIGENCE",
-        readTime: "7 MIN READ",
-        title: "Pre-LOI Diligence: What PE Firms Miss in Veterinary M&A",
-        description: "Most diligence happens too late. Here's what smart investors validate before submitting Letters of Intent in veterinary consolidation deals.",
-        slug: "pre-loi-diligence-veterinary-ma",
-        coverPlaceholder: "ARTICLE_COVER"
-      },
-      {
-        category: "COMMERCIAL INTELLIGENCE",
-        readTime: "5 MIN READ",
-        title: "How Animal Health Vendors Should Actually Design Sales Territories",
-        description: "Most territories are built on broken inputs. Here's how to design coverage around market density and capability — not arbitrary zip codes.",
-        slug: "animal-health-vendor-sales-territories",
-        coverPlaceholder: "ARTICLE_COVER"
-      }
-    ]
-  };
+  eyebrow: "INTELLIGENCE BRIEFS",
+  headline: "Market Research & Insights",
+  description: "Data-driven insights on veterinary workforce trends, market consolidation, and commercial intelligence.",
+  articles: [
+    {
+      category: "COMMERCIAL INTELLIGENCE",
+      readTime: "8 MIN READ",
+      title: "Why There Is No Single Source of Truth for the US Veterinary Market",
+      description: "The US veterinary market lacks a single source of truth, operating instead on fragmented state registries and opaque ownership structures. This data gap creates systematic waste in territory planning and sales operations.",
+      slug: "no-single-source-of-truth-veterinary-market",
+      coverPlaceholder: "ARTICLE_COVER"
+    },
+    {
+      category: "M&A INTELLIGENCE",
+      readTime: "7 MIN READ",
+      title: "Why Most Veterinary Decisions Are Still Made on Incomplete Data",
+      description: "Sales leaders in the veterinary sector face a fundamental constraint: the market infrastructure needed for informed decisions does not exist in standardized form.",
+      slug: "veterinary-decisions-made-on-incomplete-data",
+      coverPlaceholder: "ARTICLE_COVER"
+    },
+    {
+      category: "WORKFORCE INTELLIGENCE",
+      readTime: "6 MIN READ",
+      title: "Why Veterinary Hiring Fails in High-Demand Markets",
+      description: "Multi-site veterinary networks aren't losing the talent war due to compensation—they're losing because their hiring process can't match market velocity.",
+      slug: "veterinary-hiring-fails-high-demand-markets",
+      coverPlaceholder: "ARTICLE_COVER"
+    }
+  ]
+};
 
 //data-ethics.astro page
 export const dataEthicsPage = {

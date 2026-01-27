@@ -1,0 +1,67 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 100,
+      "required": true,
+      "unique": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    },
+    "date": {
+      "type": "date",
+      "required": true,
+      "unique": false
+    },
+    "excerpt": {
+      "type": "text",
+      "minLength": 50,
+      "maxLength": 300,
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "required": true,
+      "enum": [
+        "WORKFORCE INTELLIGENCE",
+        "M&A INTELLIGENCE",
+        "COMMERCIAL INTELLIGENCE"
+      ]
+    },
+    "readTime": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "json"
+    },
+    "published": {
+      "type": "boolean",
+      "default": false
+    }
+  }
+}
