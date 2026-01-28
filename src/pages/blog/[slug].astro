@@ -1,32 +1,97 @@
 ---
-import { getCollection, render } from 'astro:content';
-import type { CollectionEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro';
 import { siteConfig } from '../../config/content';
+import { marked } from 'marked';
 
 export async function getStaticPaths() {
-  const blogEntries = await getCollection('blog');
-  return blogEntries.map(entry => ({
-    params: { slug: entry.id },
-    props: { entry }
-  }));
+  const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
+  
+  const response = await fetch(`${STRAPI_URL}/api/posts?populate=*`);
+  const { data } = await response.json();
+  
+  console.log('==========================================');
+  console.log('Building static paths for:', data?.length || 0, 'posts');
+  
+  if (!data || data.length === 0) {
+    console.warn('No posts found for static paths');
+    return [];
+  }
+
+  // Debug: Log the first post to see structure
+  if (data.length > 0) {
+    console.log('First post:', JSON.stringify(data[0], null, 2));
+  }
+
+  const paths = data
+    .filter((post: any) => {
+      // Access slug directly, not through attributes
+      const slug = post?.slug || post?.attributes?.slug;
+      
+      if (!slug) {
+        console.warn('Post missing slug:', post);
+      }
+      
+      return slug;
+    })
+    .map((post: any) => {
+      // Handle both flat and nested structures
+      const slug = post.slug || post.attributes?.slug;
+      console.log('Creating path for slug:', slug);
+      
+      return {
+        params: { slug },
+        props: { post },
+      };
+    });
+
+  console.log('Total paths created:', paths.length);
+  console.log('==========================================');
+  
+  return paths;
 }
 
 type Props = {
-  entry: CollectionEntry<'blog'>;
+  post: any;
 };
 
-const { entry } = Astro.props;
-const { Content } = await render(entry);
+const { post } = Astro.props;
+const attrs = post.attributes || post;
 
-const formattedDate = entry.data.date.toLocaleDateString('en-US', {
+// Define STRAPI_URL again for use in the template
+const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
+
+// Extract all data
+const title = attrs.title;
+const excerpt = attrs.excerpt;
+const content = attrs.content;
+const category = attrs.category || 'Insights';
+const readTime = attrs.readTime || '5 min read';
+const date = attrs.date;
+const cover = attrs.cover;
+const tags = attrs.tags || [];
+
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
   year: 'numeric',
   month: 'long',
   day: 'numeric'
 });
+
+// ✅ UPDATED: Handle both Strapi v3 and v4 structures
+const coverUrl = cover?.url || cover?.data?.attributes?.url;
+const coverAlt = cover?.alternativeText || cover?.data?.attributes?.alternativeText || title;
+
+// Helper function
+function getStrapiMedia(url: string | null | undefined): string {
+  if (!url) return '';
+  if (url.startsWith('http') || url.startsWith('//')) return url;
+  return `${STRAPI_URL}${url}`;
+}
+
+// Convert Markdown to HTML
+const htmlContent = marked(content);
 ---
 
-<Layout title={`${siteConfig.name} | ${entry.data.title}`}>
+<Layout title={`${siteConfig.name} | ${title}`}>
   <article class="pt-24 pb-20 lg:pt-32 bg-white article-page">
     
     <!-- Header Section -->
@@ -35,13 +100,13 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
       <!-- Meta Information -->
       <div class="mb-6">
         <p class="text-[#0eb4b3] text-xs font-mono font-bold tracking-[0.15em] uppercase">
-          {entry.data.category} • {entry.data.readTime}
+          {category} • {readTime}
         </p>
       </div>
       
       <!-- Title -->
       <h1 class="text-4xl lg:text-5xl font-bold text-[#0b1430] mb-6 leading-tight">
-        {entry.data.title}
+        {title}
       </h1>
       
       <!-- Published Date -->
@@ -49,10 +114,21 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
         Published {formattedDate}
       </p>
       
+      <!-- Cover Image -->
+      {coverUrl && (
+        <div class="mb-8">
+          <img 
+            src={getStrapiMedia(coverUrl)} 
+            alt={coverAlt}
+            class="w-full rounded-lg shadow-md"
+          />
+        </div>
+      )}
+      
       <!-- Excerpt/Summary -->
       <div class="bg-gray-50 border-l-4 border-[#0eb4b3] p-6">
         <p class="text-lg text-[#636562] leading-relaxed">
-          {entry.data.excerpt}
+          {excerpt}
         </p>
       </div>
     </div>
@@ -62,10 +138,10 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
       <div class="border-t border-gray-200"></div>
     </div>
     
-    <!-- Content Section with better formatting -->
+    <!-- Content Section -->
     <div class="max-w-4xl mx-auto px-6 lg:px-8 article-content-wrapper">
       
-      <!-- Article Content with cards and spacing -->
+      <!-- Article Content -->
       <div class="blog-content prose prose-lg max-w-none
         prose-headings:font-bold prose-headings:text-[#0b1430]
         prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-[#0eb4b3]
@@ -82,16 +158,15 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
         prose-pre:bg-[#0b1430] prose-pre:text-white prose-pre:p-6 prose-pre:rounded-lg prose-pre:overflow-x-auto prose-pre:my-8
         prose-hr:border-gray-200 prose-hr:my-12
         prose-img:rounded-lg prose-img:shadow-md prose-img:my-8
-      ">
-        <Content />
+      " set:html={htmlContent}>
       </div>
       
       <!-- Tags Section -->
-      {entry.data.tags && entry.data.tags.length > 0 && (
+      {tags && tags.length > 0 && (
         <div class="mt-16 pt-8 border-t border-gray-200 article-tags">
           <p class="text-sm font-semibold text-[#0b1430] mb-4 uppercase tracking-wider">Topics</p>
           <div class="flex flex-wrap gap-3">
-            {entry.data.tags.map((tag: string) => (
+            {tags.map((tag: string) => (
               <span class="bg-white border-2 border-gray-200 text-[#636562] px-4 py-2 rounded-lg text-xs font-mono font-semibold uppercase tracking-wider hover:border-[#0eb4b3] hover:text-[#0eb4b3] transition-all cursor-pointer">
                 {tag}
               </span>
@@ -118,12 +193,10 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
 </Layout>
 
 <style is:global>
-  /* Custom bullet styling for unordered lists */
   .blog-content ul li {
     padding-left: 1.75rem;
   }
   
-  /* Add cyan bullets to regular list items */
   .blog-content ul li::before {
     content: '•';
     position: absolute;
@@ -133,7 +206,6 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
     font-size: 1.25rem;
   }
   
-  /* Remove bullets from list items that start with bold text */
   .blog-content ul li:has(strong:first-child)::before {
     content: '';
   }
@@ -142,19 +214,16 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
     padding-left: 0;
   }
   
-  /* Default ordered list items with numbers */
   .blog-content ol li {
     padding-left: 1.75rem;
     margin-left: 1.5rem;
   }
   
-  /* Style for ordered list numbers - cyan color */
   .blog-content ol li::marker {
     color: #0eb4b3;
     font-weight: bold;
   }
   
-  /* Remove numbers and align left for ordered list items with bold text */
   .blog-content ol li:has(strong:first-child) {
     list-style-type: none;
     padding-left: 0;
@@ -167,37 +236,31 @@ const formattedDate = entry.data.date.toLocaleDateString('en-US', {
     scroll-behavior: smooth;
   }
   
-  /* Article page initial load animation */
   .article-page {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
   }
   
-  /* Article header animation */
   .article-header {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
   }
   
-  /* Separator animation */
   .article-separator {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.4s forwards;
   }
   
-  /* Article content animation */
   .article-content-wrapper {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out 0.5s forwards;
   }
   
-  /* Tags section animation */
   .article-tags {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.7s forwards;
   }
   
-  /* Back link animation */
   .article-back-link {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out 0.8s forwards;

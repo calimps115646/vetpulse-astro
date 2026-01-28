@@ -1,14 +1,52 @@
 ---
-import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { siteConfig, blogPage } from '../config/content';
 
-// Get all published blog posts, sorted by date
-const allPosts = await getCollection('blog', ({ data }) => {
-  return data.published === true;
-});
+// Direct fetch with full debugging
+const STRAPI_URL = import.meta.env.STRAPI_URL || 'http://localhost:1337';
 
-const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+console.log('==========================================');
+console.log('BLOG PAGE DEBUG');
+console.log('STRAPI_URL from env:', import.meta.env.STRAPI_URL);
+console.log('Using STRAPI_URL:', STRAPI_URL);
+console.log('==========================================');
+
+let posts = [];
+let errorMessage = '';
+
+try {
+  const url = `${STRAPI_URL}/api/posts?populate=*&sort=date:desc`;
+  console.log('Fetching from:', url);
+  
+  const response = await fetch(url);
+  console.log('Response status:', response.status, response.statusText);
+  
+  if (!response.ok) {
+    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+  }
+  
+  const json = await response.json();
+  console.log('Response data:', JSON.stringify(json, null, 2));
+  
+  posts = json.data || [];
+  console.log('Number of posts:', posts.length);
+  
+  if (posts.length > 0) {
+    console.log('First post:', JSON.stringify(posts[0], null, 2));
+  }
+} catch (err) {
+  console.error('FETCH ERROR:', err);
+  errorMessage = err instanceof Error ? err.message : 'Unknown error occurred';
+}
+
+console.log('==========================================');
+
+// Helper function
+function getStrapiMedia(url: string | null | undefined): string {
+  if (!url) return '';
+  if (url.startsWith('http') || url.startsWith('//')) return url;
+  return `${STRAPI_URL}${url}`;
+}
 ---
 
 <Layout title={`${siteConfig.name} - ${siteConfig.tagline}`}>
@@ -36,53 +74,90 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
     <div class="border-t border-gray-200"></div>
   </div>
 
+  <!-- Debug Info (remove after fixing) -->
+  {errorMessage && (
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 mb-8">
+      <div class="bg-red-50 border-l-4 border-red-500 p-4">
+        <p class="text-red-700 font-bold">Error: {errorMessage}</p>
+        <p class="text-red-600 text-sm mt-2">Check terminal for details</p>
+      </div>
+    </div>
+  )}
+
   <!-- Articles Grid -->
   <section class="pb-20 lg:pb-32 bg-white fade-in-section">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <div class="grid md:grid-cols-3 gap-8">
-        {sortedPosts.map((post, index) => (
-          <a 
-            href={`/blog/${post.id}`} 
-            class="group cursor-pointer block article-card"
-            style={`animation-delay: ${index * 0.1}s`}
-          >
-            <article>
-              <!-- Article Cover Placeholder -->
-              <div class="bg-gray-100 border border-gray-200 rounded-lg mb-4 aspect-video flex items-center justify-center">
-                {post.data.cover ? (
-                  <img src={post.data.cover} alt={post.data.title} class="w-full h-full object-cover rounded-lg" />
-                ) : (
-                  <span class="text-gray-400 text-xs font-mono tracking-wider uppercase">
-                    ARTICLE_COVER
+      {posts.length === 0 ? (
+        <div class="text-center py-12">
+          <p class="text-gray-500 mb-4">No posts found</p>
+          <div class="text-left max-w-2xl mx-auto bg-gray-50 p-6 rounded-lg text-sm">
+            <p class="font-bold mb-2">Debug Info:</p>
+            <p>STRAPI_URL: <code class="bg-gray-200 px-2 py-1 rounded">{STRAPI_URL}</code></p>
+            <p class="mt-2">Posts count: <code class="bg-gray-200 px-2 py-1 rounded">{posts.length}</code></p>
+            <p class="mt-2 text-gray-600">Check the terminal for detailed logs</p>
+          </div>
+        </div>
+      ) : (
+        <div class="grid md:grid-cols-3 gap-8">
+          {posts.map((post: any, index: number) => {
+            const attrs = post.attributes || post;
+            
+            // Skip if no attributes
+            if (!attrs || !attrs.slug) {
+              console.warn('Skipping post with missing data:', post);
+              return null;
+            }
+
+            // ✅ UPDATED: Handle both Strapi v3 and v4 cover structures
+            const coverUrl = attrs?.cover?.url || attrs?.cover?.data?.attributes?.url;
+            const coverAlt = attrs?.cover?.alternativeText || attrs?.cover?.data?.attributes?.alternativeText || attrs?.title;
+            const category = attrs?.category || 'Insights';
+            const readTime = attrs?.readTime || '5 min read';
+
+            return (
+              <a 
+                href={`/blog/${attrs.slug}`} 
+                class="group cursor-pointer block article-card"
+                style={`animation-delay: ${index * 0.1}s`}
+              >
+                <article>
+                  <div class="bg-gray-100 border border-gray-200 rounded-lg mb-4 aspect-video flex items-center justify-center overflow-hidden">
+                    {coverUrl ? (
+                      <img 
+                        src={getStrapiMedia(coverUrl)} 
+                        alt={coverAlt} 
+                        class="w-full h-full object-cover rounded-lg" 
+                      />
+                    ) : (
+                      <span class="text-gray-400 text-xs font-mono tracking-wider uppercase">
+                        ARTICLE_COVER
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div class="mb-3">
+                    <p class="text-[#0eb4b3] text-xs font-mono tracking-wider uppercase">
+                      {category} • {readTime}
+                    </p>
+                  </div>
+                  
+                  <h2 class="text-xl font-bold text-[#0b1430] mb-3 group-hover:text-[#0eb4b3] transition-colors">
+                    {attrs.title}
+                  </h2>
+                  
+                  <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                    {attrs.excerpt}
+                  </p>
+                  
+                  <span class="text-[#0b1430] text-sm font-semibold border-b-2 border-[#0eb4b3] group-hover:text-[#0eb4b3] transition-colors inline-block">
+                    Read Article
                   </span>
-                )}
-              </div>
-              
-              <!-- Article Meta -->
-              <div class="mb-3">
-                <p class="text-[#0eb4b3] text-xs font-mono tracking-wider uppercase">
-                  {post.data.category} • {post.data.readTime}
-                </p>
-              </div>
-              
-              <!-- Article Title -->
-              <h2 class="text-xl font-bold text-[#0b1430] mb-3 group-hover:text-[#0eb4b3] transition-colors">
-                {post.data.title}
-              </h2>
-              
-              <!-- Article Description -->
-              <p class="text-gray-600 text-sm leading-relaxed mb-4">
-                {post.data.excerpt}
-              </p>
-              
-              <!-- Read More Link -->
-              <span class="text-[#0b1430] text-sm font-semibold border-b-2 border-[#0eb4b3] group-hover:text-[#0eb4b3] transition-colors inline-block">
-                Read Article
-              </span>
-            </article>
-          </a>
-        ))}
-      </div>
+                </article>
+              </a>
+            );
+          })}
+        </div>
+      )}
     </div>
   </section>
 
@@ -93,7 +168,6 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
     scroll-behavior: smooth;
   }
   
-  /* Hero section initial load animation */
   .hero-section {
     opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
@@ -104,13 +178,11 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
     animation: fadeInUp 0.8s ease-out 0.2s forwards;
   }
   
-  /* Article cards staggered animation */
   .article-card {
     opacity: 0;
     animation: fadeInUp 0.6s ease-out forwards;
   }
   
-  /* Scroll-triggered fade-in for other sections */
   .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
@@ -135,7 +207,6 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
 </style>
 
 <script>
-  // Intersection Observer for scroll-triggered animations
   document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
       threshold: 0.1,
@@ -150,7 +221,6 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
       });
     }, observerOptions);
 
-    // Observe all fade-in sections
     const fadeInSections = document.querySelectorAll('.fade-in-section');
     fadeInSections.forEach((section) => {
       observer.observe(section);
