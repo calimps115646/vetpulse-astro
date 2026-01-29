@@ -24,6 +24,19 @@ import Layout from '../layouts/Layout.astro';
       
       <!-- Form container with border -->
       <div class="bg-white rounded-lg border border-gray-200 shadow-sm p-8 md:p-12 form-container">
+        
+        <!-- SUCCESS MESSAGE (hidden by default) -->
+        <div id="successMessage" class="hidden mb-6 p-4 bg-green-50 border-l-4 border-green-500 rounded-lg">
+          <p class="text-green-800 font-semibold">✓ Message sent successfully!</p>
+          <p class="text-green-700 text-sm mt-2">We'll get back to you within 24 hours.</p>
+        </div>
+
+        <!-- ERROR MESSAGE (hidden by default) -->
+        <div id="errorMessage" class="hidden mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-lg">
+          <p class="text-red-800 font-semibold">✗ Something went wrong</p>
+          <p id="errorText" class="text-red-700 text-sm mt-2"></p>
+        </div>
+
         <form id="contactForm" class="space-y-6">
           <div>
             <label for="name" class="block text-sm font-medium text-gray-700 mb-2">
@@ -37,7 +50,7 @@ import Layout from '../layouts/Layout.astro';
               minlength="2"
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             />
-            <span class="error-message text-red-500 text-sm hidden">Please enter your name</span>
+            <span class="error-message text-red-500 text-sm hidden">Please enter your name (at least 2 characters)</span>
           </div>
 
           <div>
@@ -78,7 +91,7 @@ import Layout from '../layouts/Layout.astro';
               rows="5"
               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500 focus:border-transparent"
             ></textarea>
-            <span class="error-message text-red-500 text-sm hidden">Please describe your research needs</span>
+            <span class="error-message text-red-500 text-sm hidden">Please describe your research needs (at least 10 characters)</span>
           </div>
 
           <button
@@ -86,13 +99,10 @@ import Layout from '../layouts/Layout.astro';
             id="submitBtn"
             class="w-full bg-[#0eb4b3] text-white font-semibold py-3 px-6 rounded-lg hover:bg-[#0d9b9a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Submit Request
+            <span id="buttonText">Submit Request</span>
+            <span id="buttonLoading" class="hidden">Sending...</span>
           </button>
         </form>
-
-        <div id="successMessage" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
-          Thank you! Your request has been received (STUB).
-        </div>
 
         <p class="text-gray-600 text-sm mt-6 text-center">
           Or contact us directly: <a href="mailto:contact@vetpulse.com" class="text-[#0eb4b3] hover:underline">contact@vetpulse.com</a>
@@ -151,76 +161,76 @@ import Layout from '../layouts/Layout.astro';
 
 <script>
   const form = document.getElementById('contactForm') as HTMLFormElement;
-  const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
   const successMessage = document.getElementById('successMessage');
+  const errorMessage = document.getElementById('errorMessage');
+  const errorText = document.getElementById('errorText');
+  const buttonText = document.getElementById('buttonText');
+  const buttonLoading = document.getElementById('buttonLoading');
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    
-    // Get form data
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
-    
-    // Stub: Console log instead of actual submission
-    console.log('Form submitted:', data);
-    
-    // Disable button during "submission"
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Submitting...';
-    
-    // Mock API delay
-    setTimeout(() => {
-      // Show success message
-      successMessage?.classList.remove('hidden');
-      form.classList.add('hidden');
-      
-      // Reset after 3 seconds (optional for testing)
-      setTimeout(() => {
-        form.reset();
-        form.classList.remove('hidden');
-        successMessage?.classList.add('hidden');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Request';
-      }, 3000);
-    }, 1000);
-  });
 
-  // Client-side validation
-  const inputs = form.querySelectorAll('input[required], textarea[required]');
-  inputs.forEach(input => {
-    input.addEventListener('blur', (e) => {
-      const target = e.target as HTMLInputElement;
-      const errorMsg = target.nextElementSibling as HTMLElement;
-      
-      if (!target.checkValidity()) {
-        target.classList.add('border-red-500');
-        errorMsg?.classList.remove('hidden');
-      } else {
-        target.classList.remove('border-red-500');
-        errorMsg?.classList.add('hidden');
-      }
-    });
-  });
+    // Show loading state
+    buttonText?.classList.add('hidden');
+    buttonLoading?.classList.remove('hidden');
 
-  // Intersection Observer for scroll-triggered animations
-  document.addEventListener('DOMContentLoaded', () => {
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -100px 0px'
-    };
+    // Hide previous messages
+    successMessage?.classList.add('hidden');
+    errorMessage?.classList.add('hidden');
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-        }
+    try {
+      // Get form data as object
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        company: formData.get('company') || '',
+        message: formData.get('message'),
+      };
+
+      console.log('Sending data:', data);
+
+      // Send as JSON
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
       });
-    }, observerOptions);
 
-    // Observe all fade-in sections
-    const fadeInSections = document.querySelectorAll('.fade-in-section');
-    fadeInSections.forEach((section) => {
-      observer.observe(section);
-    });
+      const result = await response.json();
+      console.log('Response:', result);
+
+      if (result.success) {
+        // Show success message
+        successMessage?.classList.remove('hidden');
+        form.reset();
+        
+        // Scroll to success message
+        successMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        // Show error message
+        errorMessage?.classList.remove('hidden');
+        if (errorText) {
+          errorText.textContent = result.error || 'Please try again later.';
+        }
+        
+        // Scroll to error message
+        errorMessage?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+    } catch (error) {
+      console.error('Form submission error:', error);
+      // Network error
+      errorMessage?.classList.remove('hidden');
+      if (errorText) {
+        errorText.textContent = 'Network error. Please check your connection.';
+      }
+    } finally {
+      // Reset button state
+      buttonText?.classList.remove('hidden');
+      buttonLoading?.classList.add('hidden');
+    }
   });
 </script>

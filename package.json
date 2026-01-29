@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "astro": "^5.16.11",
-    "marked": "^17.0.1"
+    "marked": "^17.0.1",
+    "resend": "^6.9.1",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "@astrojs/tailwind": "^6.0.2",
