@@ -11,33 +11,152 @@ import { siteConfig, operatorsPageFull } from '../config/content';
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div class="hero-content">
           <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
-            <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
+            <span class="w-2 h-2 bg-[#0eb4b3] rounded-sm inline-block mr-2"></span>
             {operatorsPageFull.hero.eyebrow}
           </p>
-          <h1 class="text-4xl lg:text-5xl font-bold mb-6 text-[#0b1430]">
+          <h1 class="text-5xl lg:text-6xl font-medium mb-6 text-[#0b1430] tracking-tight leading-[1.1]">
             {operatorsPageFull.hero.headline}
           </h1>
-          <p class="text-xl text-[#636562] mb-8 leading-relaxed">
+          <p class="text-xl text-[#636562] mb-8 leading-relaxed font-normal">
             {operatorsPageFull.hero.description}
           </p>
-          <a href="/contact" class="bg-[#0eb4b3] hover:bg-[#0ca5a4] text-white px-6 py-3 rounded-sm font-semibold text-sm tracking-wide transition-all duration-200 inline-block">
+          <a href="/contact" class="inline-flex items-center justify-center bg-[#0eb4b3] hover:bg-[#0ca5a4] text-white px-6 py-3 rounded-lg font-medium text-base tracking-wide transition-all duration-200 shadow-xl shadow-teal-500/20 hover:translate-y-[-1px]">
             {operatorsPageFull.hero.cta}
           </a>
         </div>
         
-        <!-- Visualization -->
-        <div class="bg-[#0b1530] border border-cyan-500/20 rounded-lg p-16 flex flex-col items-center justify-center min-h-[400px] relative hero-visual">
-          <div class="text-center">
-            <p class="text-[#0eb4b3] text-xs font-mono tracking-wider uppercase mb-2 animate-pulse">
-              {operatorsPageFull.hero.visualization.label}
-            </p>
-            <div class="text-2xl lg:text-3xl font-bold mb-2 text-white">
-              {operatorsPageFull.hero.visualization.value}
+        <!-- Visualization: Redesigned Blue Box -->
+        <div class="relative w-full aspect-[4/3] lg:aspect-square xl:aspect-[4/3] bg-[#0F172A] rounded-2xl border border-slate-800 shadow-2xl overflow-hidden group hero-visual">
+          
+          <!-- Background ambient glow -->
+          <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_50%_0%,rgba(20,184,166,0.15),transparent_50%)]"></div>
+          
+          <!-- Subtle Grid Background -->
+          <div class="absolute inset-0" style="background-image: radial-gradient(rgba(148, 163, 184, 0.1) 1px, transparent 1px); background-size: 32px 32px;"></div>
+
+          <!-- Abstract Connectivity Lines (SVG) -->
+          <svg class="absolute inset-0 w-full h-full pointer-events-none opacity-40">
+            <defs>
+              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:0"></stop>
+                <stop offset="50%" style="stop-color:#14b8a6;stop-opacity:0.5"></stop>
+                <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:0"></stop>
+              </linearGradient>
+            </defs>
+            <!-- Connecting Center to widgets -->
+            <path d="M50% 50% L20% 30%" stroke="url(#lineGrad)" stroke-width="1" fill="none" class="animate-pulse" style="animation-duration: 3s"></path>
+            <path d="M50% 50% L80% 25%" stroke="url(#lineGrad)" stroke-width="1" fill="none" class="animate-pulse" style="animation-duration: 4s"></path>
+            <path d="M50% 50% L75% 75%" stroke="url(#lineGrad)" stroke-width="1" fill="none" class="animate-pulse" style="animation-duration: 5s"></path>
+            <path d="M50% 50% L25% 70%" stroke="url(#lineGrad)" stroke-width="1" fill="none" class="animate-pulse" style="animation-duration: 3.5s"></path>
+          </svg>
+
+          <!-- Center Core: "60+ Locations" -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center z-10">
+            <div class="relative">
+              <div class="absolute inset-0 bg-teal-500 rounded-full animate-ping opacity-20"></div>
+              <div class="w-16 h-16 bg-slate-900 border border-teal-500/50 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(20,184,166,0.3)]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-teal-400 w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="16" height="20" x="4" y="2" rx="2" ry="2"></rect>
+                  <path d="M9 22v-4h6v4"></path>
+                  <path d="M8 6h.01"></path>
+                  <path d="M16 6h.01"></path>
+                  <path d="M12 6h.01"></path>
+                  <path d="M12 10h.01"></path>
+                  <path d="M12 14h.01"></path>
+                  <path d="M16 10h.01"></path>
+                  <path d="M16 14h.01"></path>
+                  <path d="M8 10h.01"></path>
+                  <path d="M8 14h.01"></path>
+                </svg>
+              </div>
             </div>
-            <p class="text-[#a2a2a3] text-xs font-mono tracking-wider">
-              {operatorsPageFull.hero.visualization.subtitle}
-            </p>
+            <div class="mt-4 text-center">
+              <h3 class="text-white font-medium text-lg tracking-tight">60+ Locations</h3>
+              <div class="flex items-center justify-center gap-1.5 mt-1">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-teal-500"></span>
+                </span>
+                <span class="text-xs text-teal-400/80 font-medium tracking-wide uppercase">Monitoring Live</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Floating Widget 1: Hiring Velocity (Top Left) -->
+          <div class="absolute top-[15%] left-[10%] w-48 bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-lg p-3 shadow-xl transform transition hover:scale-105 duration-300">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-medium text-slate-400">Hiring Velocity</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"></polyline>
+                <polyline points="16 7 22 7 22 13"></polyline>
+              </svg>
+            </div>
+            <div class="flex items-end gap-2">
+              <span class="text-xl font-medium text-white tracking-tight">+14%</span>
+              <span class="text-xs text-slate-500 mb-1">vs last month</span>
+            </div>
+            <!-- Mock Sparkline -->
+            <div class="flex items-end gap-0.5 mt-2 h-4 w-full">
+              <div class="w-1/6 bg-emerald-500/20 h-[40%] rounded-t-sm"></div>
+              <div class="w-1/6 bg-emerald-500/20 h-[60%] rounded-t-sm"></div>
+              <div class="w-1/6 bg-emerald-500/20 h-[30%] rounded-t-sm"></div>
+              <div class="w-1/6 bg-emerald-500/20 h-[80%] rounded-t-sm"></div>
+              <div class="w-1/6 bg-emerald-500/40 h-[65%] rounded-t-sm"></div>
+              <div class="w-1/6 bg-emerald-500 h-[90%] rounded-t-sm"></div>
+            </div>
+          </div>
+
+          <!-- Floating Widget 2: Competitor Alert (Top Right) -->
+          <div class="absolute top-[20%] right-[8%] w-auto bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-lg p-3 shadow-xl flex items-center gap-3 transform transition hover:scale-105 duration-300">
+            <div class="w-8 h-8 rounded-full bg-orange-500/10 border border-orange-500/20 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-orange-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs font-medium text-slate-400">Competitor Alert</div>
+              <div class="text-sm font-medium text-white">New clinic opening</div>
+            </div>
+          </div>
+
+          <!-- Floating Widget 3: Portfolio Health (Bottom Left) -->
+          <div class="absolute bottom-[20%] left-[8%] bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-lg p-3 shadow-xl pr-6 transform transition hover:scale-105 duration-300">
+            <div class="flex items-center gap-3">
+              <div class="relative w-10 h-10 flex items-center justify-center">
+                <svg class="transform -rotate-90 w-10 h-10">
+                  <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="3" fill="transparent" class="text-slate-800"></circle>
+                  <circle cx="20" cy="20" r="16" stroke="currentColor" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="15" class="text-teal-500"></circle>
+                </svg>
+                <span class="absolute text-[10px] font-bold text-white">92</span>
+              </div>
+              <div class="flex flex-col">
+                <span class="text-sm font-medium text-white">Portfolio Health</span>
+                <span class="text-xs text-teal-400">Optimization Active</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Widget 4: Market Share (Bottom Right) -->
+          <div class="absolute bottom-[25%] right-[10%] w-40 bg-slate-900/60 backdrop-blur-md border border-slate-700/50 rounded-lg p-3 shadow-xl transform transition hover:scale-105 duration-300">
+            <div class="text-xs font-medium text-slate-400 mb-2">Market Share</div>
+            <div class="space-y-1.5">
+              <div class="w-full h-1.5 bg-slate-700 rounded-full overflow-hidden">
+                <div class="h-full bg-teal-500 w-[65%] rounded-full"></div>
+              </div>
+              <div class="flex justify-between text-[10px] text-slate-400">
+                <span>Your Network</span>
+                <span class="text-white">65%</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Decorative Background Nodes -->
+          <div class="absolute top-[40%] left-[20%] w-1.5 h-1.5 bg-slate-600 rounded-full opacity-50"></div>
+          <div class="absolute top-[60%] right-[30%] w-1.5 h-1.5 bg-slate-600 rounded-full opacity-50"></div>
+          <div class="absolute bottom-[10%] left-[50%] w-1.5 h-1.5 bg-slate-600 rounded-full opacity-50"></div>
+
         </div>
       </div>
     </div>
@@ -50,10 +169,10 @@ import { siteConfig, operatorsPageFull } from '../config/content';
   <section class="py-20 lg:py-24 bg-gray-50 text-navy-900 fade-in-section">
     <div class="max-w-4xl mx-auto px-6 lg:px-8">
       <p class="text-[#0eb4b3] text-sm font-mono font-bold tracking-[0.15em] uppercase mb-6 flex items-center">
-        <span class="w-2 h-2 bg-[#0eb4b3] inline-block mr-2"></span>
+        <span class="w-1.5 h-1.5 bg-[#0eb4b3] rounded-sm inline-block mr-2"></span>
         {operatorsPageFull.operatorReality.eyebrow}
       </p>
-      <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-[#0b1530] leading-tight">
+      <h2 class="text-3xl lg:text-4xl font-medium mb-6 text-[#0b1530] leading-tight tracking-tight">
         {operatorsPageFull.operatorReality.headline}
       </h2>
       <p class="text-lg text-[#636562] mb-8 leading-relaxed">
@@ -70,12 +189,10 @@ import { siteConfig, operatorsPageFull } from '../config/content';
         ))}
       </ul>
 
-
       <div class="space-y-2 mb-8">
         <p class="text-xl font-bold text-[#0b1530]">{operatorsPageFull.operatorReality.callout1}</p>
         <p class="text-xl font-bold text-[#0b1530]">{operatorsPageFull.operatorReality.callout2}</p>
       </div>
-
 
       <p class="text-[#636562] leading-relaxed">
         {operatorsPageFull.operatorReality.footer}

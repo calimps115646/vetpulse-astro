@@ -1,6 +1,20 @@
 version: '3'
 
 services:
+  astro:
+    container_name: vetpulse-astro
+    build: .
+    image: vetpulse-astro:latest
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      STRAPI_URL: http://strapi:1337
+    depends_on:
+      - strapi
+    networks:
+      - vetpulse
+
   strapi:
     container_name: vetpulse-strapi
     build: ./strapi-backend
@@ -28,6 +42,8 @@ services:
       - '1337:1337'
     depends_on:
       - postgres
+    networks:
+      - vetpulse
 
   postgres:
     container_name: vetpulse-postgres
@@ -41,7 +57,13 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - '5432:5432'
+    networks:
+      - vetpulse
 
 volumes:
   postgres-data:
+
+networks:
+  vetpulse:
+    driver: bridge
 

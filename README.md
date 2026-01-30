@@ -1,46 +1,63 @@
-# Astro Starter Kit: Basics
+# VetPulse
 
-```sh
-npm create astro@latest -- --template basics
+A veterinary market intelligence platform built with Astro + Strapi.
+
+## How to Run Locally
+
+### Frontend
+
+```bash
+cd vetpulse-astro
+npm install
+echo "STRAPI_URL=http://localhost:1337" > .env.local
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Visit `http://localhost:3000`
 
-## 🚀 Project Structure
+### Backend
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```bash
+cd strapi-backend
+npm install
+npm run develop
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Visit `http://localhost:1337/admin`
 
-## 🧞 Commands
+### Docker (Optional)
 
-All commands are run from the root of the project, from a terminal:
+```bash
+docker-compose up --build
+```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Blog Architecture
 
-## 👀 Want to learn more?
+- Posts stored in Strapi CMS
+- Fetched at build time via `/api/posts`
+- Static HTML generated for each post at `src/pages/blog/[slug].astro`
+- Uses `getStaticPaths()` to pre-render all posts
+- Markdown content rendered with `marked` library
+- Images handled via `getStrapiMedia()` utility
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Contact Flow
+
+1. User fills form on `/contact` page
+2. Form validates client-side
+3. POST to `/api/contact` endpoint
+4. Server validates with Zod schema
+5. Email sent via Resend
+6. Response returned to client
+7. Success/error message displayed
+
+## Known Limitations
+
+- **Blog requires rebuild** - New posts don't appear until `npm run build`
+- **No image optimization** - Images served directly from Strapi
+- **Contact form email** - Requires Resend API key for production
+- **No on-demand ISR** - Static generation only at build time
+- **Local Strapi only** - Backend runs locally, not deployed
+
+---
+
+**Stack:** Astro + Strapi + PostgreSQL + Docker
